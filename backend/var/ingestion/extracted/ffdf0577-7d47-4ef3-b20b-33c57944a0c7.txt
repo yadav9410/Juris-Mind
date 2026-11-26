@@ -1,0 +1,2004 @@
+2026 INSC 1214
+1 
+ 
+REPORTABLE 
+ 
+IN THE SUPREME COURT OF INDIA 
+CIVIL APPELLATE JURISDICTION 
+CIVIL APPEAL NO. 894 OF 2022 
+ 
+TWINSTAR TECHNOLOGIES LIMITED 
+…APPELLANT 
+ 
+VERSUS 
+ 
+BANK OF MAHARASHTRA & ORS. 
+…RESPONDENTS 
+ 
+WITH 
+CIVIL APPEAL NO. 512 OF 2022 
+ 
+CIVIL APPEAL NO. 509 OF 2022 
+ 
+CIVIL APPEAL NO. 1307 OF 2022 
+ 
+CIVIL APPEAL NOS. 8659–8661 OF 2026 
+ 
+CIVIL APPEAL NO.                OF 2026 
+(@ DIARY NO. 41234 OF 2026) 
+ 
+CIVIL APPEAL NO.                OF 2026 
+(@ DIARY NO. 41286 OF 2026) 
+ 
+AND  
+ 
+CIVIL APPEAL NOS. 8718–8719 OF 2026 
+ 
+JUDGMENT 
+ 
+ALOK ARADHE, J. 
+1. This batch of appeals under Section 62 of the Insolvency and 
+Bankruptcy Code, 2016 (‘the Code’) arises out of the Corporate 
+Insolvency Resolution Process (‘CIRP’) of Videocon Industries Limited 
+Digitally signed by
+KAPIL TANDON
+Date: 2026.11.16
+17:10:11 IST
+Reason:
+Signature Not Verified
+
+2 
+ 
+(‘VIL’) and twelve other companies of the Videocon group, as well as of 
+VOVL Limited (‘VOVL’), a wholly owned subsidiary of VIL.  
+2. The appeals arise out of two separate judgments of the National 
+Company Law Appellate Tribunal, Principal Bench, New Delhi 
+(‘NCLAT’), and having regard to the issues involved, can be categorised 
+into following two groups: 
+(I) GROUP I –  
+This group comprises three Civil Appeals, namely, Civil Appeal Nos. 
+894, 512 and 509 of 2022, which have been filed by Twinstar 
+Technologies Limited, the Successful Resolution Applicant (‘SRA’). The 
+aforesaid appeals emanate from the judgment dated 05.01.2022 
+passed in Company Appeal (AT) (Insolvency) Nos. 503, 505 and 529 of 
+2021 filed by three dissenting financial creditors, namely, Bank of 
+Maharashtra, IFCI Ltd., and Small Industries Development Bank of 
+India (‘SIDBI’) respectively. By the impugned judgment, the NCLAT set 
+aside the approval of the resolution plan of the SRA in the consolidated 
+CIRP of VIL and twelve group companies and remitted the matter to 
+the Committee of Creditors (‘CoC’). 
+(II)  GROUP II –  
+This group comprises the appeals concerning the foreign oil and gas 
+assets of the Videocon group. Civil Appeal No. 1307 of 2022, Civil
+
+3 
+ 
+Appeal Nos. 8659-8661 of 2026, 8718-8719 of 2026 and Civil Appeal 
+@ Diary No.41234 of 2026 have been filed by Mr. Venugopal Dhoot, 
+the erstwhile promoter of VIL (‘the Promoter’). Civil Appeal @ Diary 
+No.41286 of 2026 has been filed by VIL Vendors Association. Civil 
+Appeal No. 1307 of 2022 arises out of the judgment dated 05.01.2022, 
+insofar as the NCLAT dismissed Company Appeal (AT) (Insolvency) No. 
+650 of 2021 filed by the Promoter, whereas the remaining appeals 
+arise out of judgment dated 14.05.2026 in Company Appeal (AT) 
+(Insolvency) Nos. 299, 467, 639 and 640 of 2020 and 1442 and 1623 
+of 2024, by which the NCLAT set aside the order dated 12.02.2020 of 
+the National Company Law Tribunal, Mumbai Bench (‘NCLT’) directing 
+inclusion of the foreign oil and gas assets of the Videocon group in the 
+CIRP of VIL, and upheld the orders dated 26.06.2024 of the NCLT in 
+the CIRP of VOVL.  
+2.1 The subject matter of present appeals pertains to the CIRP of VIL and 
+its group companies and the CIRP of VOVL, which are intertwined, as 
+each of them concerns the assets forming part of the CIRP of VIL. 
+Therefore, the batch of appeals was heard analogously and is being 
+decided by this judgment.  
+2.2 For the facility of reference, this judgment has been divided in Parts A 
+and B which deal with Groups I and II appeals respectively.
+
+4 
+ 
+PART A – GROUP I: APPEALS OF THE SRA ARISING OUT OF THE 
+JUDGMENT DATED 05.01.2022 
+ 
+3. The appeals in this group raise questions of considerable importance 
+in the working of the Code, namely, (i) the nature and limits of the 
+jurisdiction of the NCLT and the NCLAT while dealing with a resolution 
+plan, (ii) whether a resolution plan which provides for payment to 
+dissenting financial creditors by way of non-convertible debentures 
+satisfies the requirement contained in Section 30(2)(b) of the Code, 
+and (iii) whether the CoC, having once approved a resolution plan 
+under Section 30(4) of the Code, can revisit its decision while the 
+approval is subject to challenge in a statutory appeal? 
+FACTUAL BACKGROUND 
+ 
+4. The facts giving rise to the filing of these appeals, briefly stated, are 
+that, the applications under Section 7 of the Code were filed by the 
+State Bank of India (‘SBI’) and other creditors against thirteen 
+companies of the Videocon group, including VIL. The said applications 
+were admitted by the NCLT by various orders passed between 
+06.06.2018 and 25.09.2018. The NCLT, Mumbai, on 08.08.2019 
+directed consolidation of the CIRPs of the thirteen corporate debtors 
+(‘the corporate debtors’). The Resolution Professional (‘RP’) invited 
+expressions of interest on 11.10.2019. On 26.11.2019, the RP issued 
+the Information Memorandum along with request for resolution plans.
+
+5 
+ 
+The timeline for submission of resolution plans was extended on 
+several occasions. 
+5. The RP received eleven resolution plans, which were opened in the 15th 
+meeting of the CoC held on 02.09.2020. At that meeting, the CoC was 
+informed that the fair value and the liquidation value of the corporate 
+debtors, being the average of the estimates provided by two registered 
+valuers, were Rs. 4,069.95 crores and Rs. 2,568.13 crores 
+respectively. Two of the resolution plans, namely those submitted by 
+the SRA and V Shape Investment Management Limited, were found to 
+be compliant and were placed before the CoC. A proposal for 
+withdrawal of the CIRP under Section 12A of the Code was also 
+submitted by the Promoter on 31.08.2020. The said proposal was 
+placed before the CoC for its consideration. 
+6. On 07.11.2020, the SRA submitted an amended and restated 
+resolution plan with a total financial outlay of Rs. 2,962.02 crores. 
+The resolution plan provided, inter alia, for (i) an upfront payment of 
+Rs. 200 crores to the financial creditors; (ii) an upfront payment of         
+Rs. 52 crores towards the admitted dues of workmen and employees; 
+(iii) an upfront payment of Rs. 10 crores to the operational creditors; 
+(iv) issuance of non-convertible debentures (‘NCDs’) of an aggregate 
+face value of Rs. 2,700 crores, carrying an annual coupon of 6.65 per
+
+6 
+ 
+cent, to the financial creditors, redeemable in five instalments, (v) the 
+first instalment of Rs. 200 crores falling due 25 months after the 
+closing date and the remaining four of Rs. 625 crores each falling due 
+in the third to sixth years; (vi) 8 per cent equity in VIL to the financial 
+creditors; and (vii) the cash balances of the corporate debtors to accrue 
+to the financial creditors. Clause 3.5.1 of the resolution plan provided 
+that dissenting financial creditors would not be paid less than the 
+amount payable under Section 53 of the Code and would be paid in 
+priority as per Regulation 38(1) of the Insolvency and Bankruptcy 
+Board of India (Insolvency Resolution Process for Corporate Persons) 
+Regulations, 2016 (‘CIRP Regulations’). Clause 3.5.7 of the resolution 
+plan provided that “in all circumstances and in any event” payment to 
+dissenting financial creditors would be made strictly as per Section 
+30(2)(b) of the Code and Regulation 38(1)(b) of CIRP Regulations. 
+7. In the 19th meeting of the CoC held on 11.11.2020, it was resolved 
+that the two compliant plans and the proposal under Section 12A 
+would be put to vote simultaneously. On 13.11.2020, SBI Capital 
+Markets Limited (‘SBI Caps’), the process advisor to the CoC, 
+circulated a distribution calculation according to which the dissenting 
+financial creditors, if any, would receive Rs. 114.21 crores. Upon 
+conclusion of the voting on 11.12.2020, the Plan of the SRA was
+
+7 
+ 
+approved by 95.09 per cent of the voting share. Four financial creditors 
+holding about 3.077 per cent voting share dissented, namely, Bank of 
+Maharashtra (1.97 per cent), IFCI Limited (1.03 per cent), SIDBI (0.053 
+per cent) and ABG Shipyard Limited (0.024 per cent). The proposal 
+under Section 12A submitted by the Promoter was rejected by 98.14 
+per cent of the voting share. On 12.12.2020, the RP issued a Letter of 
+Intent to the SRA, which was accepted by it, and the SRA furnished a 
+performance bank guarantee of Rs. 296.20 crores.  
+8. On 16.12.2020, the RP filed I.A. No. 196 of 2021 before the NCLT 
+seeking approval of the resolution plan. In Form H appended thereto, 
+the amount payable to the dissenting financial creditors was 
+estimated at Rs. 105.23 crores. During the pendency of the said 
+application, this Court on 24.03.2021 delivered its judgment in 
+Jaypee Kensington Boulevard Apartments Welfare Association v. 
+NBCC (India) Ltd.1, holding that the payment to a dissenting financial 
+creditor contemplated by Section 30(2)(b) of the Code can only be a 
+payment in terms of money. Relying upon the said decision, Bank of 
+Maharashtra filed I.A. No. 982 of 2021 objecting to approval of the 
+resolution plan on the grounds that it provided for payment to 
+dissenting financial creditors in NCDs and that there was a 
+ 
+1 (2022) 1 SCC 401
+
+8 
+ 
+discrepancy between the amount reflected in Form H and the figure 
+circulated by SBI Caps. A statement was made on behalf of CoC 
+through its counsel before NCLT that the dues of the dissenting 
+financial creditors would be paid upfront in accordance with the 
+judgment in Jaypee Kensington (supra) and Section 30(2) of the 
+Code. 
+ORDER OF THE NCLT 
+ 
+9. By an order dated 08.06.2021, the NCLT held as follows: (i) out of 
+admitted claims of Rs. 64,838.63 crores, the Plan offered Rs. 2,962.02 
+crores, entailing a haircut of 95.85 per cent, (ii) the operational 
+creditors would receive 0.72 per cent of their admitted claims, and (iii) 
+by paying Rs. 262 crores the SRA would obtain possession of all the 
+thirteen corporate debtors. The NCLT, having deference to the 
+commercial wisdom of the CoC, approved the plan under Section 31(1) 
+of the Code. The NCLT, however, requested the CoC and the SRA to 
+increase the payout to operational creditors, particularly MSMEs. The 
+NCLT directed that the dissenting financial creditors be paid their 
+liquidation value in cash, upfront, before any payment is made to the 
+assenting financial creditors. 
+10. The order of approval was challenged before the NCLAT by Bank of 
+Maharashtra, IFCI Limited and SIDBI by way of appeals, namely,
+
+9 
+ 
+Company Appeal (AT) (Ins.) Nos. 503, 505 and 529 of 2021. The order 
+of approval was also challenged by the Promoter as well as by others, 
+including Electrolux Home Products Inc., the registered proprietor of 
+the ‘Kelvinator’ trademarks licensed to the corporate debtor, by way of 
+Company Appeal (AT) (Ins.) No. 545 of 2021. The appeal of the 
+Promoter was registered as Company Appeal (AT) (Ins.) No. 650 of 
+2021.  
+11. On 19.07.2021, the NCLAT, at the stage of issuance of notice, noted 
+the manner of payment proposed under the Plan to the dissenting 
+financial creditors, that is, deferment of the bulk of the amount in 
+NCDs which was redeemable over a period of six years. Thereafter, 
+considering the observations of the Adjudicating Authority and the 
+“exceptional facts” of the matter, the NCLAT stayed the order of 
+approval and directed status quo ante to be maintained. The SRA’s 
+challenge to the said order was disposed of by this Court on 
+13.08.2021 with a request to the NCLAT to decide the appeals 
+expeditiously. 
+12. By an affidavit dated 17.09.2021, filed on 18.09.2021, the CoC, 
+through SBI on behalf of the assenting financial creditors constituting 
+about 94.98 per cent of the voting share, informed the NCLAT that, in 
+view of the observations of the Adjudicating Authority and the NCLAT,
+
+10 
+ 
+and in the larger public interest, it wished to reconsider its approval 
+of the Plan, and prayed that the matter be remitted to it for that 
+purpose. 
+JUDGMENT OF NCLAT 
+13. By the impugned judgment dated 05.01.2022, the NCLAT held, inter 
+alia, that (i) the resolution plan did not comply with Section 30(2)(b) 
+of the Code, inasmuch as payment to the dissenting financial creditors 
+by way of NCDs redeemable after a long period did not qualify as 
+“payment” in accordance of order of priority; (ii) the direction of the 
+NCLT to pay the dissenting financial creditors in cash amounted to a 
+modification of the resolution plan, which lay within the domain of the 
+CoC and not of the Adjudicating Authority; (iii) the CoC, which has the 
+power to approve a plan, has also the power to reconsider its decision 
+and is not functus officio upon approval of the Plan; and (iv) prior 
+approval of the Competition Commission of India (‘CCI’) under the 
+proviso to Section 31(4) of the Code was not shown to have been 
+obtained.  
+14. The NCLAT accordingly set aside the approval of the Plan by the CoC 
+and by the Adjudicating Authority and remitted the matter to the CoC 
+for completion of the CIRP in accordance with the Code. By the same 
+judgment, the NCLAT dismissed the appeal of the Promoter, holding
+
+11 
+ 
+that his grievances regarding the haircut and the non-inclusion of the 
+foreign oil and gas assets related to the commercial wisdom of the 
+CoC, and noting that his Section 12A proposal had been rejected by 
+the CoC by 98.14 per cent of the voting share.  
+15. Pursuant to the impugned judgment, the CoC in its 25th meeting held 
+on 12.01.2022 resolved by 97 per cent of the voting share to invite 
+fresh expressions of interest, and a Form G was published on 
+18.01.2022. When the appeals were taken up on 14.02.2022, this 
+Court issued notice and the CoC was asked not to proceed further. 
+SUBMISSIONS ON BEHALF OF THE SRA 
+16. Mr. Guru Krishna Kumar, learned senior counsel for the SRA, 
+submitted that NCLAT erroneously held that CoC had power to review 
+its approval of the resolution plan, even post approval of such plan by 
+the Adjudicating Authority. It was pointed out that no new facts were 
+either averred or recorded by CoC to justify its request for review and 
+the ground assigned, namely “larger Public Interest” was factually 
+erroneous. It was contended that resolution plan is binding on CoC 
+upon approval under Section 30(4) of the Code and the provisions of 
+the Code are sui generis and principles of any other statute cannot be 
+imported into the Code. It was urged that it was not open to CoC to 
+exercise its plenary powers to issue fresh expressions of interest after
+
+12 
+ 
+the Section 30(4) stage of the Code. In support of the aforesaid 
+submissions, reliance has been placed on a decision of this Court in 
+Ebix Singapore (P) Ltd. v. Committee of Creditors of Educomp 
+Solutions Ltd.2  
+16.1 It was contended that there is no scope for any negotiations and 
+discussions after the approval of the resolution plan by the CoC, as 
+the same would be contrary to terms of the Code. It was urged that 
+NCLT cannot do what the Code has consciously not empowered it to 
+do, especially in the absence of any express provision regarding 
+reinitiation of the CIRP. In support of the aforesaid submission, 
+reference has been made to the decisions of this Court in Committee 
+of 
+Creditors 
+of 
+Amtek 
+Auto 
+Ltd. 
+v. 
+Dinkar 
+T. 
+Venkatasubramanian & Ors.3, Gujarat Urja Vikas Nigam Ltd. v. 
+Amit Gupta & Ors.4 and a decision of NCLAT in Edelweiss Asset 
+Reconstruction 
+Company 
+Ltd. 
+v. 
+Peter 
+Beck 
+and 
+Peter 
+Vermoegensdverwaltung Ltd & Anr.5 
+16.2 It was submitted that the resolution plan offers Rs.2962 crores which 
+is more than liquidation value of respondent Nos.2 to 13, that is 
+ 
+2 (2022) 2 SCC 401 
+3 (2021) 4 SCC 457 
+4 (2021) 7 SCC 209 
+5 CA (AT) (Ins.) No.161 of 2021
+
+13 
+ 
+Rs.2568.13 crores and there is nothing unprecedented about the 
+haircut in view of approval of plans in other CIRP cases. It was pointed 
+out that this Court has approved the resolution plan even when the 
+same was below the liquidation value. Our attention was invited to a 
+decision of this Court in Maharashtra Seamless Ltd. v. 
+Padmanabhan Venkatesh & Ors.6 It was urged that neither NCLT 
+nor NCLAT are vested with any residual equity jurisdiction to interfere 
+with an otherwise lawful plan. It was contended that haircut being a 
+commercial decision of CoC, cannot be gone into by NCLAT under 
+Section 61(3) of the Code and upon approval of the resolution plan 
+CoC becomes functus officio. In this connection reference was made to 
+the decisions of this Court in K. Sashidhar v. Indian Overseas Bank 
+& Ors.7, Committee of Creditors of Essar Steel India Ltd. v. 
+Satish Kumar Gupta & Ors.8 and K.N. Rajakumar v. V. Nagarajan 
+& Ors.9 
+16.3 It was contended that NCLAT erroneously held that the SRA failed to 
+obtain approval of CCI prior to the vote of the CoC. It was pointed out 
+that the approval of the CCI was granted on 08.12.2020, i.e., before 
+the voting by the CoC concluded on 11.12.2020, and that the issue 
+ 
+6 (2020) 11 SCC 467 
+7 (2019) 12 SCC 150 
+8 (2020) 8 SCC 531 
+9 2021 SCC OnLine SC 732
+
+14 
+ 
+was neither pleaded nor argued before the NCLAT. It was contended 
+that the findings recorded by the NCLAT that resolution plan violates 
+Section 30(2) of the Code and that the adjudicating authority modified 
+the plan are factually and legally erroneous.  
+SUBMISSIONS ON BEHALF OF BANK OF MAHARASHTRA 
+(DISSENTING FINANCIAL CREDITOR) 
+ 
+ 
+17. Mr. N. Venkataraman, learned Additional Solicitor General, submitted 
+that the resolution plan suffered from several contraventions 
+inasmuch as it does not provide for either any priority of payment, or 
+cash payment to dissenting financial creditors in view of a decision of 
+this Court in Jaypee Kensington (supra). It was pointed out that 
+payment of debts to the dissenting financial creditors was below the 
+liquidation value contrary to Section 30(2)(b) of the Code and there 
+was a discrepancy between Form H and the distribution sheet sent by 
+SBI Caps and misinformation had been furnished to the CoC while 
+approving the plan. It was urged that commercial terms or distribution 
+scheme approved by the CoC are non-interferable, provided that the 
+mandatory statutory safeguards under Section 30(2) of the Code are 
+satisfied. In support of aforesaid submissions, reliance was placed on 
+the decisions of this Court in Essar Steel (supra) and Jaypee 
+Kensington (supra).
+
+15 
+ 
+17.1 It was contended that prior approval of the CCI under Sections 5 and 
+6 of the Competition Act, 2002, in respect of the resolution plan, 
+having not been obtained, the same violates the proviso to Section 
+31(4) of the Code and it is a major omission which cannot be cured at 
+a later stage. In this connection, reference has been made to a decision 
+of this Court in Independent Sugar Corporation Limited v. Girish 
+Sriram Juneja & Ors.10 It was submitted that the judicially evolved 
+principle of asset maximisation provides an additional legal ground for 
+both, the dissenting creditors and the CoC to invoke appellate 
+jurisdiction of NCLAT. It was pointed out that both the tribunals have 
+concluded that resolution plan fails the test of maximisation of value. 
+In this connection, our attention has been invited to findings 
+contained in various paragraphs of the judgment of the NCLT and the 
+NCLAT. Lastly, it was urged that CoC does not become functus officio 
+upon approval of the resolution plan and continues to remain in 
+existence until either finality is attached to the resolution plan or the 
+same is implemented. In support of the aforesaid submissions, 
+reliance has been placed on a decision of this Court in Kalyani 
+Transco v. Bhushan Power and Steel Limited & Ors.11 
+ 
+ 
+10 (2025) 5 SCC 209 
+11 (2026) 6 SCC 431
+
+16 
+ 
+SUBMISSIONS ON BEHALF OF THE COMMITTEE OF CREDITORS 
+18. Mr. Tushar Mehta, learned Solicitor General, submitted that after 
+several rounds of discussion and extension of timelines to submit 
+resolution plans, as on 31.08.2020, the RP had originally received 
+eleven resolution plans for the corporate debtors. Out of the aforesaid 
+eleven resolution plans, two plans were certified to be compliant by 
+the RP and in the meeting of the CoC held on 11.11.2020, were put to 
+vote. The resolution plan of the SRA was approved by 95.09% voting 
+share. It was contended that CIRP had been conducted in a fair and 
+transparent manner. It was pointed out that the NCLT and NCLAT had 
+recorded findings regarding the low value of the resolution plan and 
+the haircut suffered by the various classes of stakeholders including 
+MSMEs and operational creditors. It was pointed out that the affidavit 
+of the CoC dated 17.09.2021 seeking reconsideration of the resolution 
+plan was filed before the NCLAT on 18.09.2021, i.e., after the interim 
+order dated 19.07.2021 had been passed. 
+18.1 It was submitted that NCLAT has ample powers to remit the matter to 
+CoC for reconsideration which is in larger public interest and 
+preservation of public money. In support of the aforesaid submissions, 
+reference has been made to the decisions of this Court in Jaypee 
+Kensington (supra), Essar Steel (supra), and Rajputana Properties
+
+17 
+ 
+(P) Ltd. v. Ultratech Cement Ltd. & Ors.12, and to a decision of 
+NCLAT in Binani Industries Ltd. v. Bank of Baroda & Anr.13 It was 
+contended that the power to approve a resolution plan carries with it 
+all incidental powers including power to reconsider the same, even if, 
+not expressly provided in the statute. Therefore, it was urged that if a 
+resolution plan is approved once, it can always be reconsidered, as 
+power to revoke the approval is inherent within the power of CoC to 
+approve. In this connection, our attention has been invited to 
+decisions in Sakiri Vasu v. State of Uttar Pradesh & Ors.14, K. 
+Dhikpathy & Ors. v. Chairman, Chennai Port Trust & Anr.15, Duli 
+Chand v. State of U.P. & Ors.16 and Kamleshkumar Ishwardas 
+Patel v. Union of India & Ors.17 It was also pointed out that similar 
+principles are envisaged even under the General Clauses Act, 1897. 
+18.2 It was also pointed out that CoC acts as a custodian of public trust 
+during the resolution process and is required to apply highest 
+standard, duty of care, follow due process, and has to be fair to all 
+stakeholders and has to act in a transparent manner in discharge of 
+its responsibilities. It was also argued that considering the role of CoC, 
+ 
+12 (2024) 243 Comp Cas 537 
+13 2018 SCC OnLine NCLAT 521 
+14 (2008) 2 SCC 409 
+15 2001 SCC OnLine Mad 154 
+16 2011 SCC OnLine All 1279 
+17 (1995) 4 SCC 51
+
+18 
+ 
+the institution of CoC is a key to successful conduct and resolution of 
+the companies under the Code. It was pointed out that CoC’s 
+commercial wisdom is paramount. In support of the aforesaid 
+submissions, reference has been made to the decisions of this Court 
+in K. Sashidhar (supra), Essar Steel (supra), Kalpraj Dharamshi 
+& Anr. v. Kotak Investment Advisors Limited & Anr.18, and also 
+on the Report of Bankruptcy Law Reforms Committee, Volume-I:- 
+Rationale and Design (November, 2015) and the Report of the 
+Insolvency Law Committee, 2018. It was urged that CoC has the 
+power to reconsider its own decision and decisions of this Court in 
+Ebix (supra) and Amtek Auto Ltd. (supra) do not have any 
+application to these appeals. It was further urged that the CoC 
+remains in existence throughout the CIRP and that it is not an 
+‘authority’ exercising adjudicatory power to which the doctrine of 
+functus officio could apply. It was pointed out that Ebix (supra) 
+concerned a resolution applicant who sought to withdraw from its 
+resolution plan, and no question arose therein as to whether the CoC 
+could reconsider a resolution plan in public interest. Reliance has also 
+been placed on paragraphs 93–94, 105 and 107 of the decision in 
+Kalyani Transco (supra). 
+ 
+18 (2021) 10 SCC 401
+
+19 
+ 
+SUBMISSIONS OF THE SRA BY WAY OF REJOINDER 
+19. Mr. Guru Krishna Kumar, learned senior counsel in his rejoinder 
+submissions argued that NCLAT had no power to set aside the 
+approvals and remit the matter for a fresh process. It was contended 
+that the resolution plan fully complies with Section 30(2)(b) and Section 
+31(4) of the Code. It was further contended that CoC had no power to 
+withdraw its approval once granted under Section 30(4) of the Code 
+and order dated 19.07.2021 granting status quo ante did not confer 
+power on CoC to reconsider the resolution plan which was otherwise 
+binding. It was urged that the resolution plan exceeds the liquidation 
+value and therefore, extent of haircut is irrelevant and cannot furnish 
+a ground for interference with the resolution plan. It was submitted 
+that any interference with the commercial decisions under the Code, 
+must follow a calibrated approach which favours implementation of the 
+Plan. It was argued that “public interest” cannot be a ground to revisit 
+an approved plan, since public interest under the Code lies in timely 
+revival and certainty of the process. Reference was made to the decision 
+of this Court in Swiss Ribbons (P) Ltd. & Anr. v. Union of India & 
+Ors.19 Reliance was placed on the decision of this Court in Bank of 
+India & Ors. v. S.M. Kamal Pasha & Ors.20, delivered on 26.10.2026, 
+ 
+19 (2019) 4 SCC 17 
+20 2026 SCC OnLine SC 2242
+
+20 
+ 
+wherein, after referring to Kalyani Transco (supra) and Ebix (supra), 
+it has been held that the CoC is bound by its acceptance and 
+subsequent approval of a resolution plan. In the alternative, it was 
+submitted that if the matter is to be sent back, then, as held in Kalyani 
+Transco (supra), only the approval of the SRA’s plan be revoked, and 
+the CIRP be not reopened afresh. 
+20. Lastly, it was contended that without prejudice to any of the 
+submissions, in case this Court is inclined to direct any 
+reconsideration, it may be directed that the reconsideration be 
+confined to the SRA’s existing plan and specific defect be identified 
+within a short fixed time with status quo in the meantime in 
+consonance with the decisions of this Court in Jaiprakash 
+Associates Limited & Anr. v. IDBI Bank Limited & Anr.21 and 
+Jaypee Kensington (supra). 
+SUBMISSIONS ON BEHALF OF UNION OF INDIA (INTERVENOR) 
+  
+21. Mr. Vikramjit Banerjee, learned Additional Solicitor General, for the 
+Applicant in I.A. Nos. 167546 and 167555 of 2025, submitted that the 
+applications raise an issue as to whether certain assets can be treated 
+as assets of the corporate debtor. It was contended that the interest of 
+ 
+21 (2020) 3 SCC 328
+
+21 
+ 
+the corporate debtor in the oil and gas blocks under the production 
+sharing contracts could, at the most, be a right of exploration and 
+extraction, and not a proprietary interest in the property. It was urged 
+that the proprietary interest continues to vest in the Union. 
+SUBMISSIONS ON BEHALF OF GAIL (INTERVENOR) 
+  
+22. Mr. Shashank Garg, learned counsel, for Applicant in I.A. No. 120494 
+of 2025, an operational creditor, submitted that GAIL had filed its 
+claim before the RP under the gas sale agreement dated 30.12.2008, 
+which was not taken into consideration and did not form part of the 
+resolution plan. An application filed by it before the NCLT under 
+Section 60(5) of the Code was disposed of as infructuous since the 
+resolution plan had been approved. It was pointed out that an appeal 
+had been preferred by GAIL before the NCLAT, which succeeded since 
+the NCLAT had already remitted the matter to the CoC. It was pointed 
+out that GAIL filed an application before NCLT which was rejected by 
+an order dated 18.03.2025, on the ground that the resolution plan 
+had been approved in the year 2021, and that order is the subject 
+matter of Company Appeal (AT) (Ins.) No. 908 of 2025 pending before 
+the NCLAT. It was submitted that if the resolution plan is restored, 
+GAIL would be left high and dry.
+
+22 
+ 
+ISSUES FOR CONSIDERATION 
+23. We have heard learned counsel for the parties at length and have 
+perused the record. The following issues arise for our consideration: 
+(i) What is the nature and extent of the jurisdiction of the NCLT and 
+the NCLAT in relation to a resolution plan approved by the CoC?  
+(ii) Whether the NCLAT has the power to remit the resolution plan to 
+CoC? 
+(iii) Whether the resolution plan conformed to the provisions of the 
+Code and the CIRP Regulations, namely: 
+(a) 
+Whether the resolution plan is in conformity with Section 
+30(2)(b) of the Code and Regulation 38(1)(b) of the CIRP 
+Regulations and whether NCLT could cure the deficiency in 
+the resolution plan by directing cash payment to the 
+dissenting financial creditors? 
+(b) 
+Whether the approval of the CCI was obtained under 
+Sections 5 and 6 of the Competition Act, 2002 as required 
+by the proviso to Section 31(4) of the Code? 
+(iv)  What is the role of the CoC during CIRP under the Code?  
+(a) 
+Whether CoC had become functus officio on approval of 
+the resolution plan?
+
+23 
+ 
+(b) 
+Whether CoC could revisit its decision? 
+ANALYSIS 
+IN RE: ISSUE (i)  
+NATURE AND EXTENT OF THE JURISDICTION OF THE NCLT AND 
+THE NCLAT IN RELATION TO A RESOLUTION PLAN APPROVED BY 
+THE COC 
+24. Section 30 of the Code deals with submission of resolution plan. 
+Section 30(2) of the Code mandates the RP to examine each resolution 
+plan received by him to confirm that each resolution plan fulfils the 
+requirement mentioned in clauses (a) to (f) of Section 30(2) of the Code. 
+Section 30(3) of the Code requires the RP to present the resolution plan 
+which conforms to the requirements contained in Section 30(2) to the 
+CoC. Section 30(4) provides that CoC may approve the resolution plan 
+by a vote of not less than 66% of voting share of financial creditors after 
+considering its feasibility and viability, the manner of distribution 
+proposed which may take into account the order of priority amongst 
+the creditors as laid down in Section 53(1) including the priority and 
+value of the security interest of the secured creditor and such other 
+requirements as may be specified by the Board. Relevant extract of 
+Section 30(2) to Section 30(4) of the Code is extracted below for the 
+facility of reference:  
+“(2) The resolution professional shall examine 
+each resolution plan received by him to confirm 
+that each resolution plan—
+
+24 
+ 
+(a) provides for the payment of insolvency 
+resolution process costs in a manner specified 
+by the Board in priority to the payment of other 
+debts of the corporate debtor;  
+(b) 
+provides for the payment of debts of 
+operational creditors in such manner as may be 
+specified by the Board which shall not be less 
+than- 
+(i) the amount to be paid to such creditors in the 
+event of a liquidation of the corporate debtor 
+under section 53; or 
+(ii) the amount that would have been paid to 
+such creditors, if the amount to be distributed 
+under the resolution plan had been distributed 
+in accordance with the order of priority in sub-
+section (1) of section 53, whichever is higher, 
+and provides for the payment of debts of 
+financial creditors, who do not vote in favour of 
+the resolution plan, in such manner as may be 
+specified by the Board, which shall not be less 
+than the amount to be paid to such creditors in 
+accordance with sub-section (1) of section 53 in 
+the event of a liquidation of the corporate 
+debtor. 
+Explanation 1.-For removal of doubts, it is 
+hereby 
+clarified 
+that 
+a 
+distribution 
+in 
+accordance with the provisions of this clause 
+shall be fair and equitable to such creditors. 
+Explanation 2.-For the purpose of this clause, it 
+is hereby declared that on and from the date of 
+commencement 
+of 
+the 
+Insolvency 
+and 
+Bankruptcy Code (Amendment) Act, 2019, the 
+provisions of this clause shall also apply to the 
+corporate insolvency resolution process of a 
+corporate debtor- 
+(i) where a resolution plan has not been 
+approved or rejected by the Adjudicating 
+Authority;
+
+25 
+ 
+(ii) where an appeal has been preferred under 
+section 61 or section 62 or such an appeal is not 
+time barred under any provision of law for the 
+time being in force; or 
+(iii) where a legal proceeding has been initiated 
+in any court against the decision of the 
+Adjudicating Authority in respect of a resolution 
+plan;] 
+(c) provides for the management of the affairs of 
+the Corporate debtor after approval of the 
+resolution plan;  
+(d) the implementation and supervision of the 
+resolution plan;  
+(e) does not contravene any of the provisions of 
+the law for the time being in force;  
+(f) conforms to such other requirements as may 
+be specified by the Board.  
+Explanation.- For the purposes of clause (e), if 
+any approval of shareholders is required under 
+the Companies Act, 2013 (18 of 2013) or any 
+other law for the time being in force for the 
+implementation of actions under the resolution 
+plan, such approval shall be deemed to have 
+been given and it shall not be a contravention of 
+that Act or law. 
+(3) The resolution professional shall present to 
+the committee of creditors for its approval such 
+resolution plans which confirm the conditions 
+referred to in sub-section (2).  
+(4) The committee of creditors may approve a 
+resolution plan by a vote of not less than sixty-
+six per cent. of voting share of the financial 
+creditors, after considering its feasibility and 
+viability, the manner of distribution proposed, 
+which may take into account the order of 
+priority amongst creditors as laid down in sub-
+section (1) of section 53, including the priority 
+and value of the security interest of a secured
+
+26 
+ 
+creditor and such other requirements as may be 
+specified by the Board:      
+xxx xxx xxx” 
+24.1 Section 31 deals with approval of resolution plan. Section 31(1) 
+provides that if the adjudicating authority is satisfied that the 
+resolution plan as approved by the CoC under Section 30(4) meets the 
+requirement referred to in Section 30(2), it shall by order approve the 
+resolution plan. Proviso to Section 31(1) requires that adjudicating 
+authority shall before passing an order for approval of resolution plan 
+under the sub-section, satisfy that the resolution plan has provisions 
+for its effective implementation. Section 31(2) of the Code requires an 
+adjudicating authority to reject the resolution plan if it is satisfied that 
+the same does not conform to requirements of sub-section (1) of Section 
+31 of the Code. Section 31(1) and (2) are reproduced below for the 
+facility of reference:- 
+“31. (1) If the Adjudicating Authority is satisfied 
+that the resolution plan as approved by the 
+committee of creditors under sub-section (4) of 
+section 30 meets the requirements as referred to 
+in sub-section (2) of section 30, it shall by order 
+approve the resolution plan which shall be 
+binding on the corporate debtor and its 
+employees, members, creditors, including the 
+Central Government, any State Government or 
+any local authority to whom a debt in respect of 
+the payment of dues arising under any law for 
+the time being in force, such as authorities to 
+whom statutory dues are owed, guarantors and
+
+27 
+ 
+other stakeholders involved in the resolution 
+plan.  
+Provided that the Adjudicating Authority shall, 
+before passing an order for approval of 
+resolution plan under this sub-section, satisfy 
+that the resolution plan has provisions for its 
+effective implementation. 
+(2) Where the Adjudicating Authority is satisfied 
+that the resolution plan does not conform to the 
+requirements referred to in sub-section (1), it 
+may, by an order, reject the resolution plan.” 
+ 
+24.2  Section 61 provides for an appeal to the NCLAT against an order of 
+the adjudicating authority. Section 61(3) provides the grounds on 
+which an appeal against an order approving a resolution plan under 
+Section 31 may be filed. Section 61(3) which is relevant for the 
+purposes of the controversy involved in the instant appeals, reads as 
+under: 
+“(3) An appeal against an order approving a 
+resolution plan under section 31 may be filed 
+on the following grounds, namely:— 
+(i) the approved resolution plan is in 
+contravention of the provisions of any law 
+for the time being in force; 
+(ii) there has been material irregularity in 
+exercise of the powers by the resolution 
+professional 
+during 
+the 
+corporate 
+insolvency resolution period; 
+(iii) the debts owed to operational 
+creditors of the corporate debtor have not 
+been provided for in the resolution plan 
+in the manner specified by the Board;
+
+28 
+ 
+(iv) the insolvency resolution process 
+costs 
+have 
+not 
+been 
+provided 
+for 
+repayment in priority to all other debts; 
+or 
+(v) the resolution plan does not comply 
+with any other criteria specified by the 
+Board.” 
+ 
+24.3 The statutory scheme contained in the Code suggests that it is a 
+complete and self-contained Code. It entrusts the commercial 
+decisions on the issue of revival of corporate debtor to CoC. The 
+relevant statutory provisions referred to supra, namely Section 31 (1) 
+& (2) and Section 61(3) suggest that the Code identifies the 
+adjudicating authority and the NCLAT as adjudicatory bodies and not 
+merely approving authorities. As held by this Court in K. Sashidhar 
+(supra) and Essar Steel (supra), the adjudicating authority and the 
+NCLAT can neither interfere on merits with the commercial decision 
+of the CoC nor can rewrite or modify a resolution plan. The 
+adjudicating authority while approving the resolution plan has to 
+satisfy itself that the resolution plan is in consonance with the 
+requirements mentioned in Section 30(2) of the Code. The NCLAT also 
+can interfere with the resolution plan if the grounds mentioned in 
+clauses (i) to (v) of Section 61(3) of the Code are made out. Thus, the 
+Code itself, defines the nature and extent of jurisdiction of the
+
+29 
+ 
+adjudicating authority and the NCLAT. Issue no. (i) is answered 
+accordingly.  
+IN RE: ISSUE (ii) 
+POWER OF NCLAT TO REMIT THE RESOLUTION PLAN TO CoC 
+ 
+25. It is well-settled that an express grant of a statutory power carries with 
+it, by necessary implication, every incidental and ancillary power 
+required for its effective exercise.22 In the scheme of the Code, the power 
+to remit a plan to CoC is not only permissible but is the only lawful 
+course for the following reasons, (i) neither the adjudicating authority 
+nor the NCLAT can modify a resolution plan and also cannot substitute 
+their own commercial judgment for that of the CoC,  and (ii) rejecting a 
+plan under Section 31(2) of the Code may, by virtue of Section 33(1)(b), 
+lead to the liquidation of a corporate debtor, which the Code treats as a 
+measure of last resort. The appellate power conferred on the NCLAT by 
+necessary implication includes the power to remit a plan. The aforesaid 
+inference is further fortified by Rule 11 of the National Company Law 
+Appellate Tribunal Rules, 2016, which preserves the inherent powers of 
+the Appellate Tribunal to make such orders or to give such directions as 
+may be necessary for meeting the ends of justice or to prevent the abuse 
+of the process of Appellate Tribunal.  
+ 
+22 ITO v. M.K. Mohammed Kunhi, AIR 1969 SC 430
+
+30 
+ 
+26. It is noteworthy that the power to remit a resolution plan to CoC has 
+been recognised by this Court in Jaypee Kensington (supra), wherein 
+it has been held that in case a resolution plan requires modification, the 
+adjudicating authority which would include NCLAT by virtue of the 
+scheme of the Code must remit the resolution plan to CoC to consider 
+the modification, so as to afford an opportunity to resolution applicant 
+to modify the plan and vote upon the same. The relevant extract of the 
+aforesaid decision in Jaypee Kensington (supra) is extracted below for 
+the facility of reference:- 
+“170. As noticed and held in Point A (supra—
+see paras 101 to 109), the adjudicating 
+authority has no jurisdiction to enter into the 
+commercial aspects of the resolution plan and 
+to interfere with the wisdom of the Committee of 
+Creditors. The terms as provided in the 
+resolution plan for discharging the obligations 
+towards the dissenting financial creditors were 
+clearly and directly pertaining to the financial 
+model proposed by the resolution applicant and 
+accepted by the requisite majority of the 
+Committee of Creditors. The submissions made 
+on behalf of the IRP in this regard are correct 
+that if the adjudicating authority was of the view 
+that the plan did not meet with any particular 
+requirement, it could have only sent it back to 
+the CoC to consider the proposed modifications, 
+so as to afford an opportunity to the resolution 
+applicant to modify the plan and to the CoC to 
+reconsider and vote upon the same. 
+xxx xxx xxx 
+172. The upshot of the discussion foregoing is 
+that though the adjudicating authority has not
+
+31 
+ 
+erred 
+in 
+disapproving 
+the 
+treatment 
+of 
+dissenting financial creditor like ICICI Bank in 
+the resolution plan but, has erred in modifying 
+the terms of the resolution plan and in not 
+sending the matter back to the Committee of 
+Creditors for reconsideration while extending an 
+opportunity to the resolution applicant to make 
+the necessary modifications.” 
+ 
+26.1 Similar view has been taken in Essar Steel (supra) wherein the power 
+to remand the resolution plan to CoC has been affirmed. The relevant 
+extract of the aforesaid decision reads as under:- 
+“73. There is no doubt whatsoever that the 
+ultimate discretion of what to pay and how 
+much to pay each class or sub-class of 
+creditors 
+is 
+with 
+the 
+Committee 
+of 
+Creditors, but, the decision of such 
+Committee must reflect the fact that it has 
+taken into account maximising the value of 
+the assets of the corporate debtor and the 
+fact that it has adequately balanced the 
+interests of all stakeholders including 
+operational creditors. This being the case, 
+judicial 
+review 
+of 
+the 
+Adjudicating 
+Authority that the resolution plan as 
+approved by the Committee of Creditors 
+has met the requirements referred to in 
+Section 30(2) would include judicial review 
+that is mentioned in Section 30(2)(e), as 
+the provisions of the Code are also 
+provisions of law for the time being in 
+force. 
+Thus, 
+while 
+the 
+Adjudicating 
+Authority cannot interfere on merits with 
+the commercial decision taken by the 
+Committee of Creditors, the limited judicial 
+review available is to see that the 
+Committee of Creditors has taken into 
+account the fact that the corporate debtor 
+needs to keep going as a going concern
+
+32 
+ 
+during the insolvency resolution process; 
+that it needs to maximise the value of its 
+assets; and that the interests of all 
+stakeholders 
+including 
+operational 
+creditors has been taken care of. If the 
+Adjudicating Authority finds, on a given set 
+of facts, that the aforesaid parameters 
+have not been kept in view, it may send a 
+resolution plan back to the Committee of 
+Creditors to re-submit such plan after 
+satisfying the aforesaid parameters. The 
+reasons given by the Committee of 
+Creditors while approving a resolution 
+plan may thus be looked at by the 
+Adjudicating Authority only from this point 
+of view, and once it is satisfied that the 
+Committee of Creditors has paid attention 
+to these key features, it must then pass the 
+resolution plan, other things being equal.” 
+ 
+26.2 At this stage, we deem it appropriate to deal with the alternate 
+submission made by SRA that its existing plan be remitted for 
+consideration in the light of decision of this Court in Jaiprakash 
+Associates (supra). We are unable to accept the aforesaid submission 
+for the following reasons, (i) once the resolution plan is found non-
+compliant and its approval is set aside, the matter reverts to the CoC, 
+which must then exercise its commercial wisdom afresh, (ii) it is not for 
+the Adjudicating Authority, the NCLAT or this Court to dictate to the 
+CoC, the commercial course it should adopt, including whether it 
+should consider only a modified version of the existing Plan or invite 
+fresh plans, (iii) to confine the CoC as suggested by the SRA would itself
+
+33 
+ 
+be an intrusion into the domain of commercial wisdom which the Code 
+reserves to the CoC, and (iv) the order in Jaiprakash Associates 
+(supra) was passed in exercise of the powers under Article 142 of the 
+Constitution in the peculiar facts of that case and was expressly 
+directed not to be treated as a precedent.   
+26.3 It is noteworthy that the Code was amended by the Insolvency and 
+Bankruptcy Code (Amendment) Act, 2026 (Act 6 of 2026). By the said 
+amendment, a proviso has been inserted in Section 31(2) of the Code, 
+which reads as under: 
+“Provided that the Adjudicating Authority may, 
+before rejecting the resolution plan, give notice 
+to the committee of creditors to rectify any 
+defects in the resolution plan.” 
+ 
+The amendment gives statutory expression to the principle laid down 
+by this Court in Essar Steel (supra) and Jaypee Kensington (supra), 
+namely, that where a resolution plan suffers from a defect, the 
+appropriate course is to send it back to the CoC for rectification, rather 
+than to reject it outright or modify it. Our conclusion in the present 
+case rests on the law as it then stood. The amendment, however, 
+confirms the legislative policy that the remedy for a defective resolution 
+plan lies in remittance to the CoC, and the NCLAT’s order of remittance 
+is in consonance with it.
+
+34 
+ 
+26.4 For the foregoing reasons, in our opinion, the NCLAT has rightly 
+remitted the matter to CoC. Accordingly, issue no. (ii) is answered in 
+the affirmative.  
+IN RE: ISSUE (iii)(a) 
+COMPLIANCE OF SECTION 30(2)(b) OF THE CODE & REGULATION 
+38(1)(B) OF CIRP REGULATIONS AND NCLT’S CURING POWER 
+ 
+27. As stated supra, Section 30 deals with submission of resolution plan. 
+Section 30(2) provides that RP shall examine each resolution plan 
+received by him to confirm that each resolution plan conforms to the 
+requirements mentioned in Clauses (a) to (f) of Section 30(2). Section 
+30(2)(b) provides for payment of debts of operational creditors in such 
+manner as may be specified by the Board, and for payment of the debts 
+of financial creditors who do not vote in favour of the resolution plan, 
+in such manner as may be specified by the Board, which shall not be 
+less than the amount to be paid to such creditors in accordance with 
+Section 53(1) of the Code in the event of a liquidation of the corporate 
+debtor. Section 30(2)(b) reads as under: - 
+“(2) The resolution professional shall examine 
+each resolution plan received by him to confirm 
+that each resolution plan— 
+xxx xxx xxx xxx xxx 
+(b) provides for the payment of debts of 
+operational creditors in such manner as may be
+
+35 
+ 
+specified by the Board which shall not be less 
+than- 
+(i) the amount to be paid to such creditors in the 
+event of a liquidation of the corporate debtor 
+under section 53; or 
+(ii) the amount that would have been paid to 
+such creditors, if the amount to be distributed 
+under the resolution plan had been distributed 
+in accordance with the order of priority in sub-
+section (1) of section 53, whichever is higher, 
+and provides for the payment of debts of 
+financial creditors, who do not vote in favour of 
+the resolution plan, in such manner as may be 
+specified by the Board, which shall not be less 
+than the amount to be paid to such creditors in 
+accordance with sub-section (1) of section 53 in 
+the event of a liquidation of the corporate 
+debtor. 
+Explanation 1.-For removal of doubts, it is 
+hereby 
+clarified 
+that 
+a 
+distribution 
+in 
+accordance with the provisions of this clause 
+shall be fair and equitable to such creditors. 
+Explanation 2.-For the purpose of this clause, it 
+is hereby declared that on and from the date of 
+commencement 
+of 
+the 
+Insolvency 
+and 
+Bankruptcy Code (Amendment) Act, 2019, the 
+provisions of this clause shall also apply to the 
+corporate insolvency resolution process of a 
+corporate debtor- 
+(i) where a resolution plan has not been 
+approved or rejected by the Adjudicating 
+Authority; 
+(ii) where an appeal has been preferred under 
+section 61 or section 62 or such an appeal is not 
+time barred under any provision of law for the 
+time being in force; or 
+(iii) where a legal proceeding has been initiated 
+in any court against the decision of the
+
+36 
+ 
+Adjudicating Authority in respect of a resolution 
+plan;]” 
+27.1 Regulation 38 of CIRP Regulations provides for mandatory contents of the 
+resolution plan. Regulation 38(1)(b) reads as under: - 
+“(b) to the financial creditors, who have 
+a right to vote under sub-section (2) of 
+section 21 and did not vote in favour of 
+the resolution plan, shall be paid in 
+priority over financial creditors who 
+voted in favour of the plan.” 
+ 
+27.2  A three-Judge bench of this Court in Jaypee Kensington (supra) had 
+an occasion to deal with Section 30(2)(b) of the Code and held that for a 
+proper and meaningful implementation of the approved resolution plan, 
+the payment envisaged by the Second Part of Clause (b) of sub-section 
+(2) of Section 30 can only be payment in terms of money, and that a 
+financial creditor who chooses to quit the corporate debtor by dissenting 
+cannot be forced to remain attached to it by way of provisions in the 
+nature of equities or securities. The expression ‘payment’ refers only to 
+payment of money and not to anything of its equivalent in the nature of 
+barter. This Court further held that if the Adjudicating  Authority was of 
+the view that the plan did not meet any particular requirement, it could 
+only have sent it back to the CoC to consider the proposed modifications, 
+so as to afford an opportunity to the resolution applicant to modify the 
+plan and to the CoC to reconsider and vote upon it, and that the
+
+37 
+ 
+Adjudicating Authority, though justified in disapproving the treatment 
+of the dissenting financial creditor, had erred in modifying the terms of 
+the resolution plan instead of sending the same back to the CoC.  
+27.3 In the instant case, from perusal of para 10 of the order dated 
+19.07.2021 passed by NCLAT and the resolution plan itself, it is evident 
+that against liquidation value of Rs.2568.13 crores the financial 
+creditors as a class were to receive an upfront payment of Rs. 200 crores 
+and NCDs of a face value of Rs. 2,700 crores, carrying a coupon of 6.65 
+per cent, redeemable in instalments commencing 25 months after the 
+closing date and extending up to the sixth year. The dissenting financial 
+creditors were not carved out of this structure by any express provision 
+for payment in money. Their entitlement was to be worked out within 
+the same instruments, with a priority which, according to Bank of 
+Maharashtra, amounted to redemption a day before the assenting 
+creditors. A plan which leaves the dissenting financial creditors to be 
+discharged, in substance, through debentures redeemable over a period 
+of six years does not provide for “payment” within the meaning of Section 
+30(2)(b) of the Code as explained by a three-Judge Bench of this Court 
+in Jaypee Kensington (supra). 
+27.4 Clause 3.5.7 of the resolution plan, which states that payment to 
+dissenting financial creditors shall in all events be made strictly as per
+
+38 
+ 
+Section 30(2)(b), does not advance the case of the SRA. A general 
+stipulation of compliance with the law cannot be a substitute for a 
+specific provision in the plan as to how, when and in what form the 
+dissenting creditors will be paid. Compliance with Section 30(2) of the 
+Code is to be found in the terms of the plan, and not in an undertaking 
+to comply. For the aforementioned reasons, the Resolution Plan 
+contravenes Section 30(2)(b) of the Code.  
+27.5 Regulation 38(1)(b) of the CIRP Regulations secures the priority to the 
+financial creditors who did not vote in favour of the resolution plan over 
+the financial creditors who voted in favour of the plan. The resolution 
+plan does not secure such a right in favour of dissenting financial 
+creditors and the same is in violation of Regulation 38(1)(b) of the CIRP 
+Regulations.  
+27.6 Thus, the resolution plan being in contravention of Section 30(2)(b) of 
+the Code and Regulation 38(1)(b) of the CIRP Regulations, is in 
+contravention of provisions of “any law for the time being in force” and 
+thus a ground for interference with the resolution plan under Section 
+61(3) of the Code is made out. 
+27.7 The NCLT in its order dated 08.06.2021 directed the dissenting financial 
+creditors to be paid their liquidation value in cash, upfront before any 
+payment is made to the assenting creditors. The upfront cash of Rs.200
+
+39 
+ 
+crores was to be paid to the financial creditors as a class and therefore, 
+such a direction altered the payment structure of the Resolution Plan 
+and as a necessary consequence order of disbursement of payment 
+among the financial creditors. It was in substance modification of the 
+resolution plan by the NCLT which is impermissible as the resolution 
+plan can be approved and thereafter altered only by the CoC by the 
+requisite voting share under Section 30(4) of the Code. Therefore, the 
+deficiency in the resolution plan could not be cured by the NCLT in the 
+light of the statement made by the counsel for CoC. Accordingly, issue 
+no. (iii)(a) is answered.       
+IN RE: ISSUE (iii)(b)  
+APPROVAL OF CCI UNDER SECTION 31(4) OF THE CODE 
+ 
+28. This Court in Independent Sugar Corporation (supra) has held that 
+where a resolution plan contains a provision for combination as referred 
+to in Section 5 of the Competition Act, 2002, prior approval of CCI before 
+the approval of the plan by the CoC is mandatory. The NCLAT, in 
+paragraph 49 of the impugned judgment, has held that prior approval 
+of the CCI under the proviso to Section 31(4) had not been obtained. 
+However, the SRA, has placed on record by way of I.A. No. 15932 of 
+2022, a communication of the CCI dated 08.12.2020 from which it is 
+evident that approval was obtained before the voting concluded on
+
+40 
+ 
+11.12.2020 and requirement contained in proviso to Section 31(4) of the 
+Code was complied with. Accordingly, issue no. (iii)(b) is answered in 
+affirmative. 
+IN RE: ISSUE (iv)(a) 
+ROLE OF CoC DURING CIRP AND WHETHER CoC HAD BECOME 
+FUNCTUS OFFICIO 
+ 
+29. The CoC is constituted under Section 21(1) of the Code and remains in 
+existence throughout the CIRP. A majority of its members are public 
+sector banks and financial institutions dealing with public money. The 
+CoC, therefore, acts as custodian of public trust, discharges a statutory 
+role and owes a duty of trust and care and its powers under the Code 
+are commensurate with those responsibilities. The CoC is enjoined by 
+the Code to choose the best resolution plan from the market and 
+provide for any measure as part of such plan to ensure sustained life 
+of the corporate debtor. The CoC is required to follow due process and 
+be fair to all stakeholders and has to act in a transparent manner in 
+discharge of its responsibilities. The objective of the Code is to respect 
+the commercial wisdom of CoC.23 The appropriate disposition of a 
+ 
+23 Report of the Insolvency Law Committee (March 2018)
+
+41 
+ 
+defaulting firm is a business decision and only the creditors should 
+make it.24 
+29.1 The doctrine of functus officio applies to an authority which, having 
+discharged its function by a final decision, stands divested of further 
+jurisdiction in the matter. The CoC is not an adjudicatory authority. It 
+is a body of creditors, comprising domain experts, entrusted by the 
+Code with the commercial decision on the viability and feasibility of a 
+resolution plan. Its decisions are founded on its commercial wisdom, 
+which this Court has repeatedly held to be paramount. The CoC does 
+not cease to exist upon approving a plan. A three-Judge bench of this 
+Court in Kalyani Transco (supra), rejected the contention that the 
+CoC becomes functus officio upon approval of the resolution plan and 
+held that a resolution plan approved under Section 31 does not attain 
+finality until the appeals under Sections 61 and 62 are decided. It was 
+further held that, in view of the Explanation to Regulation 18(2) of the 
+CIRP Regulations, the CoC continues to exist, until the plan is 
+implemented or an order of liquidation is passed. It was also held that 
+in case after approval of resolution plan the CoC is held to be functus 
+officio, the same would leave creditors without remedy, where a plan 
+ 
+24 Report of the Bankruptcy Law Reforms Committee, Volume I: Rationale and Design 
+(November 2015)
+
+42 
+ 
+cannot be implemented or is set aside in appeal. Accordingly, issue no. 
+(iv)(a) is answered in the negative.  
+IN RE: ISSUE (iv)(b)  
+CoC’s POWER TO REVISIT ITS DECISION  
+ 
+29.2 In the present case, the approval of the resolution plan never attained 
+finality. Within a little over a month of its approval, the order of the 
+NCLT was assailed in statutory appeals under Section 61(3), and on 
+19.07.2021, the NCLAT, citing the exceptional facts of the case, stayed 
+the approval and directed maintenance of status quo ante. Such an 
+order is unusual. Its effect was to restore the parties to the position 
+existing before the order of approval and to keep the process open while 
+the appeals were pending. It was in these circumstances, and after the 
+interim order, that the CoC, by an overwhelming majority of about 95 
+per cent, sought remission of the resolution plan for its reconsideration. 
+The submission that the interim order did not confer on the CoC a carte 
+blanche to revisit its commercial wisdom misses the point. The source 
+of the CoC’s power is not only the interim order, but also its continuing 
+role under the Code. The interim order merely ensured that the process 
+was not foreclosed while the legality of the Plan was under scrutiny in 
+the statutory appellate mechanism.
+
+43 
+ 
+29.3 The reliance placed by the SRA on Ebix (supra) and Amtek Auto 
+(supra) is misplaced. In Ebix (supra), the question was whether a 
+successful resolution applicant could withdraw or seek modification of 
+a resolution plan after its approval by the CoC and while the application 
+for approval was pending before the Adjudicating Authority. This Court 
+held that the Code does not envisage such withdrawal, and that the 
+binding effect of the plan inter se the CoC and the resolution applicant 
+prevents either from reneging on its terms. Amtek Auto (supra) 
+likewise concerned the resolution applicant’s attempt to walk out of an 
+approved plan. Neither decision dealt with a situation where the 
+approval of the plan by the Adjudicating Authority had been stayed and 
+set aside in a statutory appeal on a ground under Section 61(3) of the 
+Code, and the matter had reverted to the CoC. The binding character 
+of a plan approved by the CoC presupposes a plan that is compliant 
+with the Code. It cannot be invoked to insulate from reconsideration a 
+plan which has been found to contravene Section 30(2)(b) of the Code.  
+29.4 Likewise, K.N. Rajakumar (supra) arose in the context of a withdrawal 
+under Section 12A and is of no assistance to the SRA. Similarly, the 
+reliance on Kalpraj Dharamshi (supra) is also misconceived, since 
+that decision affirmed the primacy of the commercial wisdom of the 
+CoC, which in the present case, has been exercised in favour of
+
+44 
+ 
+reconsideration. Insofar as S.M. Kamal Pasha (supra) is concerned, it 
+is noteworthy that, the CoC, on its own, sought to withdraw its approval 
+of a plan which complied with the Code, solely because the financial 
+position of the corporate debtor had improved. This Court termed that 
+attempt “shortsighted opportunism” and not an exercise of commercial 
+wisdom. Even so, it recognised that reconsideration may be directed to 
+ensure compliance with Section 30(2) of the Code. In the present case, 
+the resolution plan was found to contravene Section 30(2)(b) of the 
+Code and its approval was set aside in a statutory appeal. The decision, 
+therefore, does not assist the SRA. Therefore, the CoC was well within 
+its right to revisit the decision. Thus, issue no. (iv)(b) is answered in the 
+affirmative. 
+PART B – GROUP II: CIVIL APPEALS CONCERNING THE FOREIGN 
+OIL AND GAS ASSETS 
+FACTUAL BACKDROP 
+ 
+30. The foreign oil and gas assets comprise participating interests in four 
+oil and gas concessions in Brazil and in the Nunukan block in 
+Indonesia. VIL holds the entire shareholding of VOVL and one per cent 
+of the shares of Videocon Hydrocarbon Holdings Limited (‘VHHL’), a 
+company incorporated in the Cayman Islands, the remaining ninety-
+nine per cent of which is held by VOVL. VHHL wholly owns Videocon 
+Energy Brasil Limited (‘VEBL’), a company incorporated in the British
+
+45 
+ 
+Virgin Islands, and Videocon Indonesia Nunukan Inc. (‘VINI’). The 
+Brazilian participating interests are held by IBV Brasil Petróleo 
+Limitada (‘IBV’), a joint venture company incorporated in Brazil, whose 
+quotas were held in equal proportion by VEBL and BPRL Ventures B.V. 
+(‘BPRL’), an indirect wholly owned subsidiary of Bharat Petroleum 
+Corporation Limited. The relationship between the quotaholders of IBV 
+is governed by a Quotaholders’ Agreement dated 12.09.2008 (‘QHA’), 
+which confers on the non-transferring quotaholder a right of first 
+refusal (‘ROFR’). The Indonesian participating interest was held by 
+VINI. 
+31. The CIRP of VIL commenced on 06.06.2018. On 08.08.2019, the NCLT 
+ordered consolidation of the CIRPs of VIL and twelve domestic group 
+companies. However, VOVL was not included. 
+32. On 03.07.2019, the Promoter filed M.A. No. 2385 of 2019 in the CIRP 
+of VIL seeking a direction that the assets, rights and participating 
+interests of VOVL, VHHL, VEBL and VINI be treated as assets of VIL. 
+By an interim order dated 22.08.2019, SBI was restrained from selling 
+or disposing of the foreign oil and gas assets. The NCLT vide an order 
+dated 12.02.2020, allowed the application, holding that VIL and its 
+subsidiaries were being treated as a single economic unit and that the 
+assets were to be included in the CIRP of VIL. The said order was
+
+46 
+ 
+challenged by SBI, Pertamina and BPRL Ventures Indonesia B.V. in 
+Company Appeal (AT) (Ins.) Nos. 299, 467, 639 and 640 of 2020, and 
+on 19.02.2020 the NCLAT stayed it while continuing the interim order 
+dated 22.08.2019. M.A. No. 3944 of 2019 filed by the Promoter for 
+consolidation of the CIRP of VOVL with that of VIL was dismissed on 
+09.02.2022 for non-prosecution. 
+33. The Promoter had also challenged the order of approval of the 
+resolution plan dated 08.06.2021 in Company Appeal (AT) (Ins.) No. 
+650 of 2021, seeking a direction to issue a fresh Information 
+Memorandum with the foreign oil and gas assets included. By the 
+judgment dated 05.01.2022, the NCLAT dismissed the said appeal, 
+holding that his grievances regarding the haircut and the non-inclusion 
+of the foreign oil and gas assets related to the commercial wisdom of 
+the CoC. That part of the judgment is the subject matter of Civil Appeal 
+No. 1307 of 2022. 
+34. The NCLT on 08.11.2019, on an application under Section 9 of the 
+Code, admitted VOVL into CIRP. In the CIRP of VOVL, offers were 
+received from PRIO S.A. and Eneva S.A. for the Brazilian assets. A 
+transfer of the quotas of VEBL in IBV triggered the ROFR of BPRL under 
+the QHA. On 13.04.2023, a ROFR notice was issued to BPRL. BPRL 
+exercised its ROFR on 26.05.2023 by matching the offers, and the CoC
+
+47 
+ 
+of VOVL, in its 40th meeting held on 02.06.2023, approved the offer of 
+BPRL by 99.96 per cent of the voting share. By orders dated 
+26.06.2024, the NCLT allowed I.A. No. 2787 of 2023 filed by the RP of 
+VOVL for approval of the transaction, and dismissed I.A. No. 3896 of 
+2023 filed by the Promoter seeking its rejection. The Promoter 
+challenged those orders in Company Appeal (AT) (Ins.) Nos. 1442 and 
+1623 of 2024, which the NCLAT, by an order dated 29.07.2024, 
+directed to be heard along with the appeals against the order dated 
+12.02.2020. 
+JUDGMENT OF THE NCLAT 
+ 
+35. By the impugned judgment dated 14.05.2026, the NCLAT allowed 
+Company Appeal (AT) (Ins.) Nos. 299, 467, 639 and 640 of 2020 setting 
+aside the order of the NCLT dated 12.02.2020 and dismissing Company 
+Appeal (AT) (Ins.) Nos. 1442 and 1623 of 2024. It inter alia, held that 
+the contentions of the Promoter had been dealt with and rejected in the 
+judgment dated 05.01.2022 and that the NCLT had mixed up the issue 
+of consolidation with that of inclusion of the assets. It was found that 
+the Promoter had taken contradictory stands. It was observed that 
+VOVL was never treated as part of a single economic unit with VIL and 
+that the assets of subsidiaries, which have a distinct legal personality, 
+cannot be included in the CIRP of VIL. It has been stated before us that
+
+48 
+ 
+the ROFR transaction of BPRL stood concluded on 02.07.2026. In the 
+aforesaid factual background, this group of appeals arises for our 
+consideration. 
+SUBMISSIONS ON BEHALF OF THE PROMOTER 
+ 
+36. Mr. K.K. Venugopal and Mr. Gopal Sankaranarayanan, learned senior 
+counsel, submitted that VIL is the original acquirer of the foreign oil 
+and gas assets, having entered into the MoU with Bharat Petroleum 
+Corporation Limited, acquired the assets as purchaser under the share 
+sale agreement and furnished the performance guarantees, and that 
+the subsidiaries are mere special purpose vehicles holding the assets 
+as bare trustees for VIL under the Beneficial Ownership Agreements of 
+2008, 2010 and 2015. It was urged that (i) the lenders acknowledged 
+VIL’s ownership of the assets, and claims of Rs. 23,120.90 crores 
+(about 40.2 per cent of the claims) relating to them were admitted in 
+the CIRP of VIL while the assets were excluded, to the prejudice of the 
+operational creditors of VIL, who have no recourse against VOVL; (ii) 
+SBI transferred VIL’s shares in VOVL to SBICAP Trustee Company 
+Limited on 13.03.2018 to keep the assets out of the CIRP, which is a 
+fraud on the process;25 (iii) the NCLAT dismissed Company Appeal (AT) 
+(Ins.) No. 650 of 2021 without dealing with his contentions, despite 
+ 
+25 S.P. Chengalvaraya Naidu (Dead) by LRs v. Jagannath (Dead) by LRs & Ors., (1994) 1 SCC 1
+
+49 
+ 
+noticing the matching concept of liability and assets, and ought to have 
+first decided the appeals against the order dated 12.02.2020; (iv) the 
+NCLAT wrongly treated its judgment dated 05.01.2022 as concluding 
+the issue, and is inconsistent in permitting the assets to be dealt with 
+in the CIRP of VOVL, which also holds them only through subsidiaries; 
+and (v) in view of Alpha Corp Development (P) Ltd. v. Greater Noida 
+Industrial Development Authority & Ors.26, the corporate veil be 
+lifted and the group be treated as a single economic unit. It was prayed 
+that the CIRPs of VIL and VOVL be sent back together, with the assets 
+included. 
+SUBMISSIONS ON BEHALF OF VIL VENDORS ASSOCIATION 
+ 
+37. Mr. Maninder Singh, learned senior counsel for the VIL Vendors 
+Association, an association of about 97 unpaid suppliers of VIL, mostly 
+MSMEs, who were to receive 0.72 per cent of their admitted claims, 
+supported the Promoter and submitted that (i) the NCLAT ignored the 
+Beneficial Ownership Agreement dated 18.09.2008, the treatment of 
+the assets as “Identified Assets” in the SBI’s sanction, VOVL’s own 
+stand that it was an SPV of VIL and the minutes of the meetings of the 
+lenders dated 16.03.2018 and 13.06.2018 to sequester the assets, (ii) 
+ 
+26 2026 SCC OnLine SC 806
+
+50 
+ 
+the corporate veil be lifted27, (iii) VIL parted with its rights in the assets 
+and gave the guarantee dated 30.03.2017 without consideration, and 
+such transactions must be undone, (iv) Explanation (b) to Section 18 
+applies only where the subsidiary acquired the assets from its own 
+sources, (v) the CoC was bound to maximise value28, the assets being 
+valued at USD 7.02 billion, and (vi) the same lenders, holding 92.66 per 
+cent of the CoC of VIL and 99.96 per cent of the CoC of VOVL, would 
+recover twice on claims of Rs. 23,120.90 crores. It was prayed that the 
+impugned judgment be set aside and the order dated 12.02.2020 be 
+restored. Permission to file the appeal has been sought. 
+SUBMISSIONS ON BEHALF OF THE CoC 
+ 
+38. Mr. Tushar Mehta, learned Solicitor General, submitted that (i) the 
+Promoter himself, by letters dated 21.11.2016 and 17.01.2017, sought 
+release of VIL as co-obligor “to protect the oil and gas assets of the 
+group”, whereupon VIL became a corporate guarantor on 30.03.2017; 
+(ii) his consolidation application (M.A. No. 1416 of 2018) did not include 
+VOVL; (iii) in Writ Petition (Civil) No. 1138 of 2018, VOVL claimed the 
+assets as its own; (iv) on 20.12.2018, he consented on behalf of VOVL 
+to their monetisation; (v) M.A. No. 2385 of 2019 was filed more than a 
+ 
+27 Alpha Corp (supra) and Life Insurance Corporation of India v. Escorts Ltd. & Ors., (1986) 1 SCC 
+264 
+28 Essar Steel (supra)
+
+51 
+ 
+year after the CIRP commenced, contrary to his earlier stand; (vi) M.A. 
+Nos. 2620 and 3944 of 2019 were dismissed for non-prosecution and 
+were never challenged, nor was the stay order dated 19.02.2020; (vii) 
+his Section 12A proposal, considered though he was not an “applicant”, 
+kept the offshore assets out and was rejected by 98.14 per cent without 
+challenge; (viii) he made a volte face in Company Appeal (AT) (Ins.) No. 
+650 of 2021, and has not filed the affidavit directed by the NCLAT on 
+02.11.2022 as to whether he was a director of VOVL; (ix) the assets 
+stand excluded by clause (b) of the Explanation to Section 18 and 
+Section 36(4)(d) of the Code, and he is estopped from contending 
+otherwise; (x) the allegations of fraud and collusion lack particulars; 
+and (xi) the transaction with BPRL was approved by the CoC of VOVL 
+in its commercial wisdom, and the repeated attempts to re-agitate the 
+issue amount to an abuse of process. 
+SUBMISSIONS ON BEHALF OF BPRL 
+39. Mr. N. Venkataraman, learned Additional Solicitor General, appearing 
+for BPRL, submitted that BPRL, a third party, exercised its pre-existing 
+ROFR under the QHA; that it invested about USD 1,092 million in the 
+Brazilian assets pursuant to the approval of the Cabinet Committee on 
+Economic Affairs dated 27.07.2022, and paid about USD 151 million 
+between December 2018 and December 2025 to cure the defaults of
+
+52 
+ 
+VEBL and prevent forfeiture; that the transaction concluded on 
+02.07.2026, before the appeals were first listed on 21.07.2026; and 
+that VINI lost its Indonesian participating interest on account of 
+defaults in 2019.  
+SUBMISSIONS ON BEHALF OF PERTAMINA 
+ 
+40. Mr. Nakul Dewan, learned senior counsel for Pertamina, submitted 
+that (i) VINI’s 23 per cent participating interest in the Nunukan block 
+under the Joint Operating Agreement dated 04.07.2007 stood deemed 
+transferred to Pertamina and BPRL Ventures Indonesia B.V. on 
+11.07.2019 upon VINI’s default, which was never challenged and was 
+formally effected by the Republic of Indonesia on 08.07.2026, and 
+hence no interest of VINI existed when the NCLT passed its order dated 
+12.02.2020, to which Pertamina was not a party; (ii) VINI is 
+incorporated in the Cayman Islands, the Code does not apply to it, and 
+assets outside India can be reached only through Sections 234 and 235 
+of the Code, which were never invoked29; (iii) the moratorium in the 
+CIRP of VIL extended only to VIL’s shares in VOVL; (iv) Alpha Corp 
+(supra) is distinguishable; and (v) Pertamina pressed all its grounds 
+before the NCLAT, and the reference to the Brazilian assets in 
+paragraph 3 of the impugned judgment is a typographical error. 
+ 
+29 Lalit Kumar Jain v. Union of India & Ors., (2021) 9 SCC 321
+
+53 
+ 
+SUBMISSIONS ON BEHALF OF THE RP OF VIL 
+ 
+41. Mr. Niranjan Reddy, learned senior counsel for the RP, submitted that 
+VIL’s shares in VOVL are its assets and have been so shown in the 
+Information Memorandum, and that the order dated 12.02.2020 having 
+been stayed by the NCLAT on 19.02.2020, the foreign oil and gas assets 
+could not be included in the CIRP of VIL. 
+SUBMISSIONS ON BEHALF OF THE SRA 
+ 
+42. Mr. Guru Krishna Kumar, learned senior counsel for the SRA, 
+submitted that the Promoter raised no objection to the Plan before the 
+NCLT; that his pleas on haircut and value relate to the non-justiciable 
+commercial wisdom of the CoC; that the rejection of his Section 12A 
+proposal, which itself excluded the foreign assets, has attained finality; 
+that the assets, being held by subsidiaries, stand excluded by clause 
+(b) of the Explanation to Section 18, as also held by the NCLAT on 
+14.05.2026; and that the Plan takes no part of these assets, each 
+subsidiary being left to its own process under Clauses 3.1.3 and 3.2 of 
+the Plan. 
+SUBMISSIONS ON BEHALF OF THE CoC IN REPLY 
+ 
+43. Mr. Tushar Mehta, learned Solicitor General, in reply, submitted that 
+unlike the cases relied upon by the SRA, where the CoC took a 
+somersault on its own, the CoC in the present case sought
+
+54 
+ 
+reconsideration only when prompted by judicial intervention, namely, 
+the order of the NCLT dated 08.06.2021 and the interim order of the 
+NCLAT dated 19.07.2021. 
+REJOINDER ON BEHALF OF THE PROMOTER 
+ 
+44. Mr. Gopal Sankaranarayanan, learned senior counsel, in rejoinder, 
+submitted that VOVL is an Indian company and the assets are held by 
+VHHL. Reliance was placed on the admissions of SBI that VIL holds the 
+oil and gas assets, contained in the minutes of the meetings dated 
+28.07.2012, 29.06.2015 and 28.06.2017, the Rupee Term Facility 
+Agreement dated 08.08.2012, and SBI’s M.A. No. 1306 of 2018. It was 
+urged that nothing was suppressed, the consistent stand of the 
+Promoter being that VIL owns everything; that the writ petition, filed 
+even before the proceedings under Section 7 of the Code, must be read 
+in the context of the prayer made therein; and that by the minutes 
+dated 13.06.2018 the lenders decided to sequester the assets, which is 
+not the way a lender should behave. It was prayed that both the plans, 
+in the CIRPs of VIL and VOVL, be sent back and the assets be included. 
+ANALYSIS 
+ 
+45. The principal question which arises for consideration in this group is 
+whether the foreign oil and gas assets of the Videocon group, which are
+
+55 
+ 
+held through the subsidiaries of VIL, can be included in the CIRP of 
+VIL. 
+46. A company may, for tax or regulatory reasons, divide itself into 
+multitude of commonly owned subsidiaries. The Companies Act 
+statutorily recognises subsidiary company as a separate legal entity. 
+The holding company and the subsidiary company are considered as 
+separate legal entities. The legal relationship between a holding and a 
+subsidiary company is that they are distinct legal persons and a 
+holding company does not own the assets of the subsidiary and in law 
+the management of the business of the subsidiary also vests in its 
+Board of Directors.30  
+47. Section 18 of the Code requires the interim resolution professional to 
+take control and custody of the assets over which the corporate debtor 
+has ownership rights. The Explanation to Section 18 reads as under: 
+“Explanation.—For the purposes of this section, 
+the term “assets” shall not include the following, 
+namely:— 
+(a) assets owned by a third party in possession 
+of the corporate debtor held under trust or 
+under 
+contractual 
+arrangements 
+including 
+bailment; 
+(b) assets of any Indian or foreign subsidiary of 
+the corporate debtor; and 
+ 
+30 Vodafone International Holdings B.V. v. Union of India & Anr., (2012) 6 SCC 613
+
+56 
+ 
+(c) such other assets as may be notified by the 
+Central Government in consultation with any 
+financial sector regulator.” 
+(emphasis supplied) 
+ 
+48. The same legislative policy is reflected in Section 36(4)(d) of the Code, 
+which excludes the assets of any Indian or foreign subsidiary of the 
+corporate debtor from the liquidation estate. These provisions recognise 
+the settled principle that a holding company and its subsidiary, even a 
+wholly owned one, are distinct legal persons and that the holding 
+company does not own the assets of its subsidiary.  
+49. In the backdrop of aforesaid statutory provisions and the decision of 
+this Court in Vodafone International Holdings B.V. (supra), we may 
+advert to the facts of the case in hand. In December, 2005, VIL signed 
+an MoU with BPCL to jointly acquire domestic and international oil and 
+gas assets in Brazil and Indonesia. In pursuance of the aforesaid MoU, 
+VIL and Bharat Petroleum Ventures BV which is a wholly owned 
+subsidiary company of BPCL, formed a joint venture company in Brazil, 
+namely, VB (Brasil) Petroleo Ltda (‘VB Brasil’). In July, 2009, VIL and 
+BPRL entered into a Joint Study and Participation Agreement to jointly 
+bid for an Indonesian Company, pursuant to which VINI was 
+incorporated to hold the Indonesian assets. Thereafter, VIL transferred 
+its entire quota in VB Brasil, later renamed IBV, to VEBL, its wholly 
+owned subsidiary, which in turn came to be held through VHHL. VIL
+
+57 
+ 
+also entered into Beneficial Ownership Agreements with its 
+downstream subsidiary companies. The aforesaid facts clearly 
+demonstrate that the Brazilian and Indonesian assets are held by the 
+subsidiaries of the VIL and not VIL itself. VIL does not hold any interest 
+directly in the Brazilian and Indonesian assets but through its 
+subsidiaries, namely, VOVL and VHHL. As already noticed supra, 
+holding and subsidiary companies are separate and distinct legal 
+entities, and the holding company does not own the assets of the 
+subsidiary company. Therefore, even though VOVL, namely subsidiary 
+of VIL, may have interest in Brazilian and Indonesian assets, the same 
+do not become the assets of VIL. A plain reading of clause (b) of 
+Explanation to Section 18, also supports the conclusion that the said 
+assets cannot be termed as assets belonging to VIL. 
+50. It is trite law that a party cannot be permitted to approbate and 
+reprobate, or to blow hot and cold, by taking inconsistent stands to the 
+prejudice of others; having accepted the benefit of, or acquiesced in, a 
+particular course, he is estopped from repudiating it at a later stage.31 
+51. In the instant case, the Promoter cannot be permitted to agitate the 
+issue of inclusion of foreign oil and gas assets in the CIRP for the 
+ 
+31 R.N. Gosain v. Yashpal Dhir, (1992) 4 SCC 683 and Cauvery Coffee Traders v. Hornor 
+Resources (International) Co. Ltd., (2011) 10 SCC 420
+
+58 
+ 
+following reasons, (i) VIL and VOVL had availed of the financial 
+assistance as obligor/co-obligor, however, vide communication dated 
+21.11.2016, the VIL requested to be released from its obligation as a 
+co-obligor, (ii) in the communication dated 17.01.2017, signed by the 
+Promoter himself, he had requested the SBI to shift the facilities 
+sanctioned to VIL and VOVL only to VOVL, (iii) the Promoter actively 
+participated in the valuation and monetization process which was 
+sought to be initiated by the secured lenders, (iv) the Section 12A 
+proposal submitted by the Promoter also expressly kept the offshore 
+assets out of the business plan, (v) the Promoter did not take any steps 
+to get the order dated 19.02.2020 passed by the NCLAT staying the 
+inclusion of foreign oil and gas assets, vacated, (vi) the Promoter neither 
+filed any objection to the resolution plan nor challenged the rejection 
+of his proposal, (vii) the application of the Promoter seeking to bring 
+VOVL within the consolidated process, namely M.A. No. 3944 of 2019, 
+was dismissed for non-prosecution on 09.02.2022, and that order has 
+attained finality and (viii) Promoter had himself filed an application for 
+consolidation of CIRP, which did not include any prayer for inclusion 
+of foreign subsidiaries within the realm of CIRP in India. 
+52. The Promoter, having acquiesced in the consolidated CIRP, cannot be 
+permitted now to take a plea that foreign oil and gas assets should be
+
+59 
+ 
+included in the CIRP of VIL. The Promoter has acquiesced in the 
+consolidated CIRP wherein foreign oil and gas assets were not included. 
+He, himself, requested to keep the said assets out of the CIRP process 
+and thus, cannot be permitted to approbate and reprobate. He is 
+estopped from taking the plea of inclusion of foreign oil and gas assets 
+in the CIRP of VIL by his conduct. 
+53. The reliance placed on the Beneficial Ownership Agreements is also of 
+no assistance to the Promoter. The same are three intra-group 
+agreements under which overseas subsidiaries of VIL agreed to hold 
+the foreign oil and gas assets for the benefit of VIL. The aforesaid 
+arrangement does not transfer the assets of subsidiaries to the holding 
+company, namely, VIL. 
+54. The Promoter has relied on the admissions made by the SBI in relation 
+to foreign oil and gas assets by referring to the meeting dated 
+28.07.2012 between VIL and Consortium of Lenders of VIL for rupee 
+term loan, rupee term facility dated 08.08.2012, minutes of meetings 
+dated 29.06.2015 and 28.06.2017 between VIL, Group Companies and 
+Lenders’ Forum as well as admission made by the SBI in M.A. No. 1306 
+of 2018 seeking consolidation of insolvency of group companies. The 
+same 
+are 
+of 
+no 
+assistance 
+to 
+the 
+Promoter 
+as 
+correspondence/agreements between the parties cannot confer title to
+
+60 
+ 
+a holding company in respect of assets of a subsidiary company in the 
+absence of any document showing such a transfer. In any case, the 
+correspondence/agreements cannot alter the legal position. 
+55. The reliance placed by the Promoter on a decision of this Court in 
+Alpha Corp. (supra) is of no assistance to him as the principle that the 
+Court may look at the substance of an arrangement rather than its 
+form, cannot be invoked to override a statutory exclusion contained in 
+the clause (b) of explanation to Section 18 of the Code. It is also 
+pertinent to note that in Alpha Corp. (supra), the companies whose 
+assets were sought to be included shared common directors with the 
+parent company and had no assets other than the lands leased to them 
+by the development authority for the very projects. The decision in LIC 
+v. Escorts Ltd. (supra) also does not advance the case of the Promoter. 
+The corporate veil is lifted to prevent fraud or the evasion of a statute, 
+whereas here the statute itself, by Explanation (b) to Section 18, 
+excludes the assets of a subsidiary, and the Explanation admits of no 
+qualification as to the source from which the subsidiary acquired the 
+assets. 
+56. Insofar as the grievance of the Promoter with regard to the extent of the 
+haircut and the adequacy of liquidation value is concerned, suffice it to 
+say that haircut and evaluation of the resolution plan are the matters
+
+61 
+ 
+squarely within the commercial wisdom of CoC. The liquidation value 
+was determined as the average of the estimates of two registered 
+valuers and was placed before the CoC on 02.09.2020. The Promoter 
+did not challenge the said valuation. The commercial wisdom of CoC as 
+held by this Court in K. Sashidhar (supra) and Essar Steel (supra), 
+is non-justiciable. Therefore, the aforesaid grievance of the Promoter 
+cannot be entertained. 
+57. The Promoter is also aggrieved by the rejection of his proposal under 
+Section 12A of the Code. Even though, the Promoter was not an 
+“applicant” within the meaning of Section 12A of the Code, yet the CoC 
+got the proposal evaluated by its advisors, gave promoters opportunity 
+of presentation, and put the same to vote along with compliant 
+resolution plans. The proposal of the Promoter was rejected by 98.14% 
+of voting share which was never challenged. A decision of CoC on a 
+proposal for withdrawal under Section 12A is a business decision 
+resting on its commercial wisdom32 and no ground is made out to 
+interfere with the same.  
+58. The allegations of fraud and collusion against SBI, the RP and the CoC 
+are general and bereft of the particulars required in law. The 
+invocation of the pledge over the shares of VOVL in March 2018 was 
+ 
+32 Vallal RCK v. Siva Industries and Holdings Ltd. & Ors., (2022) 9 SCC 803
+
+62 
+ 
+an act of enforcement of security by the lenders of VOVL, and a 
+challenge to a pre-insolvency transaction, if any, lies only in the 
+manner provided under the Code before the Adjudicating Authority. 
+The decision in S.P. Chengalvaraya Naidu (supra) has no application 
+in the absence of any specific pleading describing particulars of fraud 
+allegedly practised on the Adjudicating Authority. 
+59. Now, we may deal with the submission made by BPRL that the CIRP of 
+VOVL should not be interfered with. In the CIRP of VOVL, what was 
+approved was the transfer of the quotas of VEBL in IBV, which stood 
+pledged to the secured financial creditors of VOVL, pursuant to the 
+exercise by BPRL of its pre-existing contractual ROFR under the QHA. 
+The transaction did not involve treating the assets of VOVL’s 
+subsidiaries as forming part of the estate of VOVL. In any event, the 
+challenge of the Promoter to the transaction rests entirely on the 
+premise that the assets belong to VIL, which we have already rejected. 
+The transaction was approved by the CoC of VOVL by 99.96 per cent of 
+the voting share in its commercial wisdom, and by the NCLT. The 
+Promoter has no locus to question it. The transaction has since been 
+concluded, and BPRL, a third party, has acted upon it, including by 
+funding the defaults of VEBL for several years to preserve the assets. 
+No ground is made out to interfere with the CIRP of VOVL.
+
+63 
+ 
+APPEAL OF THE VIL VENDORS ASSOCIATION 
+ 
+60. The grievance of the VIL Vendors Association is derivative. The 
+operational creditors of VIL are entitled to recover their dues from the 
+estate of VIL in accordance with the Code. Since the foreign oil and gas 
+assets do not form part of that estate, their exclusion causes no legal 
+injury to them. The minutes of the meetings of the lenders relied upon 
+relate to the enforcement of the pledge over the shares of VOVL, which 
+was a pre-insolvency transaction; a challenge to such a transaction, if 
+any, lies only in the manner provided under the Code before the 
+Adjudicating Authority. If VIL parted with its rights or furnished the 
+guarantee without consideration, the remedy lies under Sections 43 to 
+51 and 66 of the Code before the Adjudicating Authority, and no such 
+application has been filed. The inclusion of assets in the CIRP is a 
+question of law under Section 18, and not of the commercial wisdom of 
+the CoC. The valuation of assets which do not belong to VIL is, 
+therefore, irrelevant. However, having regard to the nature of the issue, 
+we grant permission to the VIL Vendors Association to pursue such 
+remedies as may be available to it under law. 
+CONSIDERATIONS WHICH OUGHT TO GUIDE NCLAT WHILE 
+REMANDING AN APPROVED RESOLUTION PLAN
+
+64 
+ 
+61. Before parting with the judgment, we would like to advert to the scope 
+and ambit of power of NCLAT to remand an approved resolution plan 
+to the CoC.  
+62. NCLAT, while exercising powers under Section 61(3) of the Code, may 
+remand a non-compliant Resolution Plan back to the CoC to achieve 
+the object and purpose of the Code. At the same time, we place 
+guardrails on the power of remand, such that it is only used in the most 
+appropriate situations.   
+63. One of the elementary rules of interpretation is that a statute must be 
+construed as a whole, in line with the object and intention of the 
+Legislature, so as to achieve the purpose of the Statute.33 No provision 
+is to be read in isolation, as a watertight compartment.34 The provisions 
+must instead be read together so as to advance the legal and policy 
+goals that the statute as a whole seeks to achieve. Therefore, our 
+inquiry flows in the following manner: the power of remand cannot be 
+assessed by looking at the appellate jurisdiction of the NCLAT in 
+ 
+33Maxwell on The Interpretation of Statutes, Twelfth Edition: While applying the principles of 
+Interpretation of Statute, the Courts find out the intention, purpose and the object of the 
+legislation so as to ensure that the interpretation given makes the statute workable and the 
+words are given their normal meaning.  
+34 Philips India Ltd. v. Labour Court, Madras, (1985) 3 SCC 103, paras 14-15; Punjab Beverages 
+Pvt. Ltd., Chandigarh v. Suresh Chand And Anr 1978 SCR (3) 370, para 3
+
+65 
+ 
+isolation, but only by asking how that power fits within the scheme of 
+the Code as a whole. 
+64. Four sets of functionaries bear on the completion of the CIRP in the 
+scheme of the Code : the RP to commence, conduct and conclude the 
+process, the CoC to take commercial decisions, the Adjudicating 
+Authority (NCLT) to examine whether decisions are in compliance 
+under Section 31; and the Appellate Authority (NCLAT) under Sections 
+61 and 62, to correct errors in that examination. While the role of each 
+functionary is earmarked and operates at a distinctive stage, they are 
+not watertight compartments; rather, they operate in tandem within 
+the same framework so as to realise the ultimate purpose of maximising 
+the value of assets, and to promote enterprise. These functionaries 
+weave themselves into each other to realise the objective purpose of the 
+insolvency resolution.  
+65. The objectives of the Code are, first, to keep the corporate debtor a going 
+concern; second, to provide an efficient recovery mechanism for all 
+creditors; and third, to maximise the value of assets during insolvency 
+in a time-bound manner.35 Underlying each of these is the object of 
+preventing the liquidation of the corporate debtor, a measure the 
+ 
+35 Statement of Object and Reasons, Insolvency and Bankruptcy Code, 2016; The Report of the 
+Bankruptcy Law Reforms Committee, Vol-I : Rationale and Design  (November 2015) (paras 
+3.4.1 to  3.4.2)
+
+66 
+ 
+Legislature has consciously treated as a last resort.36 These objectives 
+supply the yardstick against which the exercise of every power under 
+the Code, including the power of remand, must be measured. 
+66. It is against this yardstick that the necessity for the NCLAT to remand 
+the approved resolution plan to the CoC must be examined. That such 
+a power exists has already been recognised by this Court.37 What 
+requires articulation is when the exercise of such power is necessary, 
+and within what limits. 
+67. The necessity becomes apparent from the structure of the appellate 
+remedy itself. An appeal against an order approving a resolution plan 
+lies only on the grounds enumerated in Section 61(3), and the NCLAT, 
+confined to those grounds, may either dismiss the appeal or allow it. If 
+the appeal is allowed, the only consequence, absent a remand, is that 
+the approval is set aside. Where the CIRP period has run its course, 
+such setting aside would ordinarily push the corporate debtor towards 
+liquidation, the very outcome the Legislature has sought to avoid. A 
+binary choice between affirming a non-compliant plan and setting it 
+aside altogether would thus place the Appellate Authority at odds with 
+the objectives it is meant to serve. 
+ 
+36 Swiss Ribbons Pvt. Ltd. (supra) 
+37 Greater Noida Development Authority v. Prabhjit Singh Soni & Anr., 2024 INSC 102, para. 33 
+and Essar Steel (supra)
+
+67 
+ 
+68. Remand resolves this dilemma and does so in a manner consistent with 
+the allocation of roles among the actors under the Code. Where the 
+defect calls for a modification to the commerciality of the plan itself, it 
+would not be open to either the Adjudicating Authority or the Appellate 
+Authority to undertake that modification, given that it is settled that 
+the commercial wisdom of the CoC is paramount.38 The appropriate 
+course is to remit the matter to the CoC, which alone is competent to 
+reconsider the plan on its merits. The power of remand, therefore, 
+operates as the connecting link between the three actors: it permits the 
+appellate authority to check the legality without trespassing on the 
+commerciality, which is the sole domain of the CoC, and keeps the Code 
+functioning as a single organism, with each sub-unit serving its 
+respective objective, rather than as watertight compartments. 
+69. The same feature that makes remand useful, however, also makes it 
+necessary to define its limits. Remand returns the matter to the body 
+best placed to assess the merits, whether by reason of its domain 
+expertise or its closer engagement with the facts. But it carries a clear 
+cost: prolonged litigation, erosion of certainty, increased financial 
+burden on the parties, and, in the context of Code, depletion of asset 
+ 
+38 Essar Steel (supra)
+
+68 
+ 
+value.39 Thereby, the very objectives of efficient recovery and timely 
+maximisation of value that the Code seeks to secure may be negatively 
+impacted.  
+70. The power of remand must, therefore, be exercised in a manner that 
+secures its benefit by incurring the least potential costs. Since 
+timeliness is itself an objective of the Code, the following considerations 
+ought to guide the NCLAT when remanding an approved resolution 
+plan to the CoC : 
+a) The power of remand is to be exercised only in furtherance 
+of the objectives of the Code, namely, keeping the corporate 
+debtor a going concern, ensuring a fair and reasonable 
+recovery for all classes of creditors, and maximising the 
+value of the corporate debtor’s assets during the CIRP. A 
+remand that advances none of these objectives is not 
+justified merely because the power to order it exists. 
+b) Remand must rest on a finding of legal non-compliance, 
+whether under Section 30(2) or under any other law within 
+ 
+39Arvind Kumar Jaiswal (D) thr. Lr. v. Devendra Prasad Jaiswal Varun, 2023 SCC OnLine SC 146; 
+TrustBridge, Natasha Agarwal & Bhavin Patel, Working Paper, “Return to sender: The Misuse Of 
+Remand 
+Orders 
+By 
+Appellate 
+Tribunals” 
+(September 
+26, 
+2025), 
+<https://trustbridge.in/RePEc/papers/2025_Aggarwaletal_Remands.pdf>, p. 1. (Patel & 
+Agarwal)
+
+69 
+ 
+the meaning of Section 61(3)(i). This follows from the 
+confined grounds on which an appeal against an approved 
+resolution plan lies.  
+c) Remand 
+is 
+to 
+be 
+exercised 
+sparingly 
+and 
+with 
+circumspection, and not in a manner that departs from any 
+express procedure prescribed under the Code, consistent 
+with the limitations laid down by this Court on the exercise 
+of inherent and implied powers to do justice. 
+d) Remand also serves a corrective function. Where the 
+Adjudicating Authority, on encountering a curable defect in 
+a resolution plan placed before it for approval under Section 
+31, proceeds to modify the plan in exercise of its own 
+discretion instead of remitting it to the CoC, the NCLAT may 
+remand the plan so as to restore the allocation of roles 
+between the Adjudicating Authority and the CoC. 
+e) Since a speedy and time-bound resolution is itself an 
+objective of the Code, any order of remand must be 
+accompanied by a strict direction to adhere to the timelines 
+prescribed under the Code and the relevant regulations, so 
+that the remedy does not itself become a source of the very 
+delay that the Code seeks to avoid.
+
+70 
+ 
+CONCLUSION 
+PART-A 
+ 
+71. For the reasons assigned by us in Part-A of this judgment, we do not 
+find any merit in Civil Appeal Nos. 894, 512 and 509 of 2022. In the 
+result, the aforesaid appeals fail and are hereby dismissed.  However, 
+there shall be no order as to costs.  
+INTERLOCUTORY APPLICATIONS  
+ 
+71.1 I.A. No. 120494 of 2025 has been filed by GAIL (India) Ltd., for 
+intervention on the ground that in case resolution plan is approved, its 
+claim shall stand extinguished. As we have already upheld the order 
+passed by the NCLAT, needless to state that the claim of GAIL shall be 
+dealt with by the RP in accordance with the Code and the CIRP 
+Regulations. The NCLAT shall decide the Company Appeal (AT)(Ins.) No. 
+908 of 2025 in the light of this judgment. All contentions of GAIL are 
+left open. The application is, accordingly, disposed of.  
+71.2 I.A. Nos. 167546 and 167555 of 2025 are applications seeking 
+intervention by Union of India. The issue whether interest of the 
+corporate debtor in oil and gas blocks under the production sharing 
+contracts is only a right of exploration and extraction, would arise when 
+a resolution plan dealing with such interest is placed for consideration. 
+Needless to state that Union of India shall be at liberty to state all
+
+71 
+ 
+contentions before the RP and the adjudicating authority. Accordingly, 
+the interlocutory applications are disposed of. 
+71.3 The pending interlocutory applications in Civil Appeal Nos. 894, 512 
+and 509 of 2022 are disposed of. 
+PART-B 
+ 
+72. In view of the reasons assigned by us in Part-B of this judgment, the 
+Civil Appeal No. 1307 of 2022, Civil Appeal Nos. 8659–8661 of 2026, 
+8718–8719 of 2026 and Civil Appeal @ Diary No. 41234 of 2026 are 
+also dismissed. Civil Appeal @ Diary No. 41286 of 2026 is dismissed, 
+with liberty as aforesaid. Pending interlocutory application(s), if any, 
+shall stand disposed of. There shall be no order as to costs.  
+ 
+ 
+ 
+………………………………………………J. 
+[PAMIDIGHANTAM SRI NARASIMHA] 
+ 
+ 
+………………………………………………J. 
+  [ALOK ARADHE] 
+ 
+NEW DELHI; 
+NOVEMBER 16, 2026.
