@@ -11,6 +11,7 @@ import logging
 import os
 import re
 import ssl
+import shutil
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -36,7 +37,7 @@ SOURCE_META = {
     "allahabad_elegalix": ("Allahabad High Court eLegalix", "judgment"),
 }
 MAX_BYTES = 20 * 1024 * 1024
-MAX_TEXT = 12000
+MAX_TEXT = 50000
 logger = logging.getLogger(__name__)
 
 # Process-local cache/throttle: safe defaults for a single Render web instance.
@@ -98,15 +99,88 @@ def _host_allowed(url: str, source_id: str) -> bool:
     )
 
 
-def _extract_pdf(content: bytes) -> tuple[str, list[dict]]:
+def _extract_pdf(content: bytes) -> tuple[str, list[dict], bool]:
+    """Extract native PDF text, using OCR only when the runtime has Tesseract.
+
+    A one-character page number is not considered successful legal-text extraction.
+    OCR absence is reported rather than silently accepting an empty/scanned PDF.
+    """
     pages, locators = [], []
+    ocr_used = False
+    tesseract_available = shutil.which("tesseract") is not None
     with fitz.open(stream=content, filetype="pdf") as doc:
         for i, page in enumerate(doc):
             text = page.get_text("text").strip()
+            if len(text) < 80 and tesseract_available:
+                try:
+                    text_page = page.get_textpage_ocr(language="eng", dpi=220, full=True)
+                    ocr_text = page.get_text("text", textpage=text_page).strip()
+                    if len(ocr_text) > len(text):
+                        text = ocr_text
+                        ocr_used = True
+                except Exception as exc:
+                    logger.info("PDF OCR unavailable for page=%s: %s", i + 1, type(exc).__name__)
             if text:
                 pages.append(text)
                 locators.append({"page": i + 1, "text": text[:2500]})
-    return "\n\n".join(pages), locators
+    return "\n\n".join(pages).strip(), locators, ocr_used
+
+
+def _html_document_candidates(soup: BeautifulSoup, base_url: str, source_id: str) -> list[str]:
+    """Find embedded official document links on an India Code landing page."""
+    if source_id != "india_code":
+        return []
+    candidates: list[str] = []
+    for node in soup.find_all(["iframe", "embed", "object", "a"]):
+        raw = node.get("src") or node.get("data") or node.get("href")
+        if not raw:
+            continue
+        candidate = urljoin(base_url, raw.strip())
+        path = urlparse(candidate).path.lower()
+        label = " ".join([
+            str(node.get("title") or ""), str(node.get("aria-label") or ""),
+            node.get_text(" ", strip=True) if getattr(node, "name", None) == "a" else "",
+        ]).lower()
+        looks_like_document = (
+            path.endswith(".pdf") or "bitstream" in path or "download" in path
+            or "viewcontent" in path or "pdf" in label or "download" in label
+        )
+        if looks_like_document and _host_allowed(candidate, source_id) and candidate not in candidates:
+            candidates.append(candidate)
+    return candidates[:3]
+
+
+def _meaningful_legal_text(text: str, content_kind: str) -> bool:
+    """Reject tiny PDF text layers and generic pages masquerading as documents."""
+    normalized = re.sub(r"\s+", " ", text or "").strip()
+    if len(normalized) < 80:
+        return False
+    if content_kind == "pdf":
+        # PDFs should contain a substantive text layer, not just a page number/header.
+        return len(normalized.split()) >= 12
+    return len(normalized.split()) >= 12
+
+
+def _extract_targeted_statutory_provisions(text: str, query: str) -> dict[str, str]:
+    """Extract explicitly requested numbered Act sections without rewriting them."""
+    requested = re.findall(r"\bsection\s+(\d+[A-Za-z]?)\b", query or "", flags=re.I)
+    output: dict[str, str] = {}
+    if not requested or not text:
+        return output
+    for number in dict.fromkeys(requested):
+        heading = re.compile(
+            rf"(?im)^\s*{re.escape(number)}\.\s+[^\n]{{5,240}}"
+        )
+        match = heading.search(text)
+        if not match:
+            continue
+        next_heading = re.compile(r"(?m)^\s*\d+[A-Za-z]?\.\s+[A-Z][^\n]{5,240}")
+        end_match = next_heading.search(text, match.end())
+        end = end_match.start() if end_match else len(text)
+        provision = text[match.start():end].strip()
+        if len(provision) >= 80:
+            output[number] = provision
+    return output
 
 
 def _host_pacing(host: str) -> None:
@@ -150,7 +224,7 @@ def _retry_after_seconds(response: httpx.Response | None) -> float | None:
             return None
 
 
-def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0) -> dict:
+def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0, *, _allow_embedded: bool = True) -> dict:
     if not _host_allowed(url, source_id):
         raise ValueError("Search result URL is outside the selected official source host allowlist.")
 
@@ -226,22 +300,51 @@ def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0) ->
     content_type = response.headers.get("content-type", "").lower()
     downloaded = True
     extraction_error = None
+    ocr_used = False
+    embedded_document_url = None
     try:
         if "application/pdf" in content_type or response.content[:5] == b"%PDF-":
-            text, pages = _extract_pdf(response.content)
+            text, pages, ocr_used = _extract_pdf(response.content)
             kind = "pdf"
+            if not _meaningful_legal_text(text, kind):
+                extraction_error = (
+                    "PDF contains no substantial selectable text; OCR is unavailable or did not recover text."
+                    if not ocr_used else "OCR did not recover substantial legal text."
+                )
         elif "text/html" in content_type or "application/xhtml+xml" in content_type:
             soup = BeautifulSoup(response.text, "html.parser")
+            candidates = _html_document_candidates(soup, final_url, source_id) if _allow_embedded else []
             for node in soup(["script", "style", "noscript", "nav", "footer", "header"]):
                 node.decompose()
+            # Prefer the page's substantive text; if it is only a viewer shell, fetch
+            # one same-host embedded PDF/bitstream as the actual statutory document.
             text = soup.get_text(" ", strip=True)
             pages = []
             kind = "html"
+            if not _meaningful_legal_text(text, kind) and candidates:
+                embedded_document_url = candidates[0]
+                embedded = _fetch_official_document(
+                    embedded_document_url, source_id, timeout=timeout, _allow_embedded=False
+                )
+                if embedded.get("extracted"):
+                    result = dict(embedded)
+                    result["landing_page_url"] = final_url
+                    result["source_url"] = embedded.get("source_url", embedded_document_url)
+                    result["access_method"] = "official_landing_page_embedded_document"
+                    result["cache_status"] = "miss"
+                    with _cache_lock:
+                        _fetch_cache[cache_key] = (time.time(), dict(result))
+                    return result
+                extraction_error = embedded.get("extraction_error") or "Embedded official document could not be extracted."
         else:
             raise ValueError(f"Unsupported official document content type: {content_type or 'unknown'}")
     except Exception as exc:
         text, pages, kind = "", [], "unknown"
         extraction_error = f"{type(exc).__name__}: {str(exc)[:250]}"
+
+    meaningful = _meaningful_legal_text(text, kind)
+    if text.strip() and not meaningful and not extraction_error:
+        extraction_error = "Downloaded page contained too little substantive text to count as document extraction."
 
     result = {
         "source_url": final_url,
@@ -249,10 +352,13 @@ def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0) ->
         "content_type": kind,
         "content_sha256": hashlib.sha256(response.content).hexdigest(),
         "downloaded": downloaded,
-        "extracted": bool(text.strip()),
-        "extracted_text": text[:MAX_TEXT],
+        "extracted": meaningful,
+        "extracted_text": text[:MAX_TEXT] if meaningful else "",
+        "extraction_quality": "substantive_text" if meaningful else "insufficient_text",
+        "ocr_used": ocr_used,
+        "embedded_document_url": embedded_document_url,
         "page_evidence": pages[:8],
-        "document_retrieved": bool(text.strip()),  # backwards-compatible legacy field
+        "document_retrieved": meaningful,  # backwards-compatible legacy field
         "extraction_error": extraction_error,
         "verification_status": "not_verified",
         "access_method": "brave_index_then_direct_official_fetch",
@@ -411,6 +517,16 @@ def search_official_sources(query: str, *, jurisdiction: str | None = None,
             try:
                 fetched = _fetch_official_document(url, sid, timeout=min(timeout, 20.0))
                 item.update(fetched)
+                if sid == "india_code" and fetched.get("extracted"):
+                    provision_extracts = _extract_targeted_statutory_provisions(
+                        fetched.get("extracted_text", ""), query
+                    )
+                    requested_sections = re.findall(r"\bsection\s+(\d+[A-Za-z]?)\b", query, flags=re.I)
+                    item["targeted_provisions"] = provision_extracts
+                    item["targeted_provision_status"] = (
+                        "extracted" if provision_extracts else
+                        "not_found_in_extracted_text" if requested_sections else "not_requested"
+                    )
                 # Normalize older fetcher payloads without overriding explicit new booleans.
                 if "downloaded" not in fetched:
                     item["downloaded"] = bool(fetched.get("document_retrieved") or fetched.get("content_sha256"))

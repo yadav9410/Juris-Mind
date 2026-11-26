@@ -1,27 +1,24 @@
-JurisMind targeted official-source retrieval patch
+JurisMind — India Code extraction patch
 
-Replace these files, preserving the paths:
+REPLACE THESE FILES (preserve the paths):
+1. backend/app/sources/external_research.py
+2. backend/tests/test_external_research.py
 
-1) backend/app/sources/external_research.py
-2) frontend/app.py
-3) backend/tests/test_external_research.py
+WHAT THIS PATCH CHANGES
+- India Code HTML landing/viewer pages are inspected for embedded same-host PDF/bitstream links.
+- If the landing page contains only a viewer shell (for example, a page number such as "1"), the connector attempts to retrieve the embedded official document.
+- PDF extraction now rejects tiny text layers rather than counting a page number as extracted legal text.
+- If Tesseract is installed in the runtime, low-text PDF pages receive an OCR attempt. If OCR is unavailable or unsuccessful, the extraction failure is made explicit; TLS verification is not disabled.
+- Extracted text is retained up to 50,000 characters, and a requested numbered statutory section (for example Section 7) is separately captured up to the next numbered section heading, preserving subsection text.
+- Result metadata includes extraction_quality, ocr_used, embedded_document_url, targeted_provisions and targeted_provision_status.
 
-What changed:
-- Long memo instructions are reduced to short issue-specific Brave queries (max 220 chars before site filters; max 300 chars sent as q).
-- Brave provider errors now retain HTTP status, response detail, failure category, and the actual query sent.
-- Search results distinguish completed, partial, provider_error, and no_results.
-- Per-source summaries expose search_status and search_errors.
-- Frontend displays provider-level status and errors rather than always reporting that search finished successfully.
-- HTTP 429 retrieval failures are explicitly categorized; existing host cooldown and TLS verification remain enabled.
-- Added tests for concise query generation, Brave HTTP 422 diagnostics, and partial provider success.
+VALIDATION PERFORMED
+- backend/tests/test_external_research.py: 20 passed
+- backend/tests/: 127 passed, 3 skipped
+- Python compilation: passed
 
-Validation performed:
-- backend/tests/test_external_research.py: 17 passed
-- backend/tests/: 124 passed, 3 skipped
-- Python compilation of frontend/app.py and external_research.py passed.
-
-Not included / not claimed:
-- This does not guarantee that Brave will return relevant official judgments.
-- This does not bypass CAPTCHA or court access controls.
-- It does not implement legal-authority verification; verified_authorities_count remains 0 unless a separate verification process is implemented.
-- A live Brave or court-portal test was not possible in this environment. After deployment, inspect per-source status and query_sent fields.
+IMPORTANT LIMITATIONS
+- Tests use mocked HTTP/PDF responses. A live India Code/Render test has not been performed from this environment.
+- If the India Code PDF is image-only and Tesseract is not installed on Render, the connector will correctly report insufficient text rather than claim extraction succeeded. OCR deployment would require adding/installing Tesseract in the Render runtime.
+- Section extraction depends on the source PDF's numbered heading being text-extractable and recognizable. Review the returned source text and targeted_provisions before relying on it.
+- This patch does not verify the current legal status, amendments, commencement or proposition-level authority.

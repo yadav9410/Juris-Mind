@@ -297,3 +297,89 @@ def test_mixed_provider_success_and_failure_is_partial(monkeypatch):
     assert result["external_search_status"] == "partial"
     assert result["source_summaries"]["india_code"]["search_status"] == "completed"
     assert result["source_summaries"]["egazette_india"]["search_status"] == "failed"
+
+
+def test_india_code_viewer_shell_fetches_embedded_pdf_and_uses_its_text(monkeypatch):
+    import httpx
+    import app.sources.external_research as external
+
+    landing_url = "https://indiacode.gov.in/handle/123456789/1362"
+    pdf_url = "https://indiacode.gov.in/bitstream/123456789/1362/1/IBC_2016.pdf"
+    html = f'''<html><head><title>Act details</title></head><body>
+      <div id="viewer">1</div><iframe src="{pdf_url}"></iframe></body></html>'''
+    pdf_bytes = b"%PDF-1.7 fake-for-test"
+
+    class FakeClient:
+        def __init__(self, **kwargs): pass
+        def __enter__(self): return self
+        def __exit__(self, *args): pass
+        def get(self, url):
+            if url == landing_url:
+                return httpx.Response(200, request=httpx.Request("GET", url),
+                    headers={"content-type": "text/html"}, text=html)
+            assert url == pdf_url
+            return httpx.Response(200, request=httpx.Request("GET", url),
+                headers={"content-type": "application/pdf"}, content=pdf_bytes)
+
+    monkeypatch.setattr(external.httpx, "Client", FakeClient)
+    monkeypatch.setattr(external, "_host_pacing", lambda host: None)
+    monkeypatch.setattr(external, "_extract_pdf", lambda content: (
+        "THE INSOLVENCY AND BANKRUPTCY CODE, 2016 Section 7. (1) A financial creditor... " * 8,
+        [{"page": 1, "text": "Section 7"}], False,
+    ))
+    external._fetch_cache.clear()
+
+    result = external._fetch_official_document(landing_url, "india_code")
+    assert result["downloaded"] is True
+    assert result["extracted"] is True
+    assert result["access_method"] == "official_landing_page_embedded_document"
+    assert result["landing_page_url"] == landing_url
+    assert result["source_url"] == pdf_url
+    assert "Section 7" in result["extracted_text"]
+
+
+def test_india_code_pdf_with_only_page_number_is_not_counted_as_extracted(monkeypatch):
+    import httpx
+    import app.sources.external_research as external
+
+    url = "https://indiacode.gov.in/bitstream/123456789/1362/1/IBC_2016.pdf"
+
+    class FakeClient:
+        def __init__(self, **kwargs): pass
+        def __enter__(self): return self
+        def __exit__(self, *args): pass
+        def get(self, requested_url):
+            return httpx.Response(200, request=httpx.Request("GET", requested_url),
+                headers={"content-type": "application/pdf"}, content=b"%PDF-1.7 fake")
+
+    monkeypatch.setattr(external.httpx, "Client", FakeClient)
+    monkeypatch.setattr(external, "_host_pacing", lambda host: None)
+    monkeypatch.setattr(external, "_extract_pdf", lambda content: ("1", [], False))
+    external._fetch_cache.clear()
+
+    result = external._fetch_official_document(url, "india_code")
+    assert result["downloaded"] is True
+    assert result["extracted"] is False
+    assert result["extraction_quality"] == "insufficient_text"
+    assert result["extracted_text"] == ""
+    assert "OCR" in result["extraction_error"]
+
+
+def test_targeted_section_extraction_preserves_section_and_subsections():
+    from app.sources.external_research import _extract_targeted_statutory_provisions
+
+    text = (
+        "THE INSOLVENCY AND BANKRUPTCY CODE, 2016\n"
+        "7. Initiation of corporate insolvency resolution process by financial creditor.—"
+        "(1) A financial creditor either by itself or jointly with other financial creditors, "
+        "may file an application for initiating corporate insolvency resolution process "
+        "against a corporate debtor before the Adjudicating Authority when a default has occurred.\n"
+        "(2) The financial creditor shall make an application under sub-section (1) in such form "
+        "and manner and accompanied with such fee as may be prescribed.\n"
+        "8. Insolvency resolution by operational creditor.—A creditor may deliver a demand notice."
+    )
+    result = _extract_targeted_statutory_provisions(text, "Research IBC Section 7")
+    assert "7" in result
+    assert "(1) A financial creditor" in result["7"]
+    assert "(2) The financial creditor" in result["7"]
+    assert "8. Insolvency resolution" not in result["7"]
