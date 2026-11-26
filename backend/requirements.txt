@@ -12,3 +12,6 @@ PyJWT[crypto]>=2.9,<3
 PyMuPDF>=1.24,<2
 beautifulsoup4>=4.12,<5
 openai>=1.68,<3
+
+# Explicit, refreshable Mozilla CA bundle for verified HTTPS requests.
+certifi>=2025.1.31,<2027

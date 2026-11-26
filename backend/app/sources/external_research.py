@@ -10,6 +10,7 @@ import hashlib
 import logging
 import os
 import re
+import ssl
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -19,6 +20,7 @@ from urllib.parse import urlparse, urljoin
 
 import fitz
 import httpx
+import certifi
 from bs4 import BeautifulSoup
 
 OFFICIAL_DOMAINS = {
@@ -41,19 +43,48 @@ logger = logging.getLogger(__name__)
 # This is deliberately conservative; a shared Redis limiter can replace it later.
 _CACHE_TTL_SECONDS = 6 * 60 * 60
 _HOST_MIN_INTERVAL_SECONDS = {
-    "egazette.gov.in": 2.0,
-    "egazette.nic.in": 2.0,
-    "elegalix.allahabadhighcourt.in": 3.0,
+    # Government portals are deliberately accessed conservatively.
+    "egazette.gov.in": 4.0,
+    "egazette.nic.in": 4.0,
+    "elegalix.allahabadhighcourt.in": 12.0,
+}
+_DEFAULT_429_COOLDOWN_SECONDS = {
+    "egazette.gov.in": 300.0,
+    "egazette.nic.in": 300.0,
+    "elegalix.allahabadhighcourt.in": 900.0,
 }
 _cache_lock = threading.Lock()
 _fetch_cache: dict[str, tuple[float, dict]] = {}
 _host_lock_guard = threading.Lock()
 _host_locks: dict[str, threading.Lock] = {}
 _host_last_request: dict[str, float] = {}
+_host_cooldown_until: dict[str, float] = {}
 
 
 class ExternalSearchNotConfigured(RuntimeError):
     pass
+
+
+class OfficialSourceCooldown(RuntimeError):
+    """Raised when a host has asked the client to pause requests."""
+
+    http_status = 429
+
+    def __init__(self, host: str, retry_after_seconds: float):
+        self.host = host
+        self.retry_after_seconds = max(0.0, retry_after_seconds)
+        super().__init__(
+            f"Official source {host} is in a rate-limit cooldown; "
+            f"retry after approximately {int(self.retry_after_seconds)} seconds."
+        )
+
+
+def _ssl_context() -> ssl.SSLContext:
+    """Use an up-to-date Mozilla CA bundle; never disable TLS verification."""
+    context = ssl.create_default_context(cafile=certifi.where())
+    context.check_hostname = True
+    context.verify_mode = ssl.CERT_REQUIRED
+    return context
 
 
 def _host_allowed(url: str, source_id: str) -> bool:
@@ -79,15 +110,28 @@ def _extract_pdf(content: bytes) -> tuple[str, list[dict]]:
 
 
 def _host_pacing(host: str) -> None:
+    """Serialize requests per host and enforce both pacing and 429 cooldown."""
     with _host_lock_guard:
         lock = _host_locks.setdefault(host, threading.Lock())
     with lock:
-        interval = _HOST_MIN_INTERVAL_SECONDS.get(host, 0.35)
         now = time.monotonic()
+        cooldown_until = _host_cooldown_until.get(host, 0.0)
+        if cooldown_until > now:
+            raise OfficialSourceCooldown(host, cooldown_until - now)
+        interval = _HOST_MIN_INTERVAL_SECONDS.get(host, 1.0)
         wait_for = interval - (now - _host_last_request.get(host, 0.0))
         if wait_for > 0:
             time.sleep(wait_for)
         _host_last_request[host] = time.monotonic()
+
+
+def _set_host_cooldown(host: str, response: httpx.Response) -> float:
+    retry_after = _retry_after_seconds(response)
+    if retry_after is None:
+        retry_after = _DEFAULT_429_COOLDOWN_SECONDS.get(host, 300.0)
+    with _host_lock_guard:
+        _host_cooldown_until[host] = time.monotonic() + retry_after
+    return retry_after
 
 
 def _retry_after_seconds(response: httpx.Response | None) -> float | None:
@@ -130,6 +174,7 @@ def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0) ->
             with httpx.Client(
                 timeout=timeout,
                 follow_redirects=False,
+                verify=_ssl_context(),
                 headers={"User-Agent": "JurisMindLegalResearch/1.0"},
             ) as client:
                 response = client.get(current_url)
@@ -157,12 +202,12 @@ def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0) ->
             current_url = redirected
             continue
         if response.status_code == 429:
-            delay = _retry_after_seconds(response)
+            delay = _set_host_cooldown(host, response)
             logger.warning(
-                "Official source rate limited: source_id=%s host=%s retry_after_seconds=%s; no immediate retry",
-                source_id, host, delay,
+                "Official source rate limited: source_id=%s host=%s retry_after_seconds=%s; host cooldown activated",
+                source_id, host, int(delay),
             )
-            # Do not retry automatically: respect portal throttling and return 429 upstream.
+            # Do not retry automatically. Subsequent requests are suppressed during cooldown.
             response.raise_for_status()
         if response.status_code in {500, 502, 503, 504} and attempt == 0:
             time.sleep(1.0)
@@ -324,7 +369,18 @@ def search_official_sources(query: str, *, jurisdiction: str | None = None,
             except Exception as exc:
                 item["retrieval_error"] = f"{type(exc).__name__}: {str(exc)[:300]}"
                 item["retrieval_error_type"] = type(exc).__name__
-                item["http_status"] = getattr(getattr(exc, "response", None), "status_code", None)
+                if isinstance(exc, httpx.ConnectError) and "CERTIFICATE_VERIFY_FAILED" in str(exc):
+                    item["retrieval_failure_category"] = "tls_certificate_verification"
+                elif isinstance(exc, OfficialSourceCooldown):
+                    item["retrieval_failure_category"] = "host_rate_limit_cooldown"
+                elif item.get("http_status") == 429:
+                    item["retrieval_failure_category"] = "http_rate_limited"
+                item["http_status"] = (
+                    getattr(getattr(exc, "response", None), "status_code", None)
+                    or getattr(exc, "http_status", None)
+                )
+                if isinstance(exc, OfficialSourceCooldown):
+                    item["retry_after_seconds"] = int(exc.retry_after_seconds)
                 item["downloaded"] = False
                 item["extracted"] = False
                 item["retrieval_status"] = "download_failed"
