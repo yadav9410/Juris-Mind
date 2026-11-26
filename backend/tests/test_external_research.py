@@ -182,3 +182,45 @@ def test_429_without_retry_after_uses_conservative_default_cooldown():
     response = httpx.Response(429, request=request)
     delay = _set_host_cooldown(host, response)
     assert delay == 900.0
+
+
+def test_nyaykosh_client_reads_documented_law_and_penalty_endpoints():
+    import httpx
+    from app.sources.nyaykosh import NyaykoshClient
+
+    def handler(request):
+        if request.url.path.endswith("/penalties"):
+            return httpx.Response(200, json=[{"breach": "Example breach", "section": "S. 9"}],
+                                  headers={"content-type": "application/json"})
+        return httpx.Response(200, json={"id": "dpdp-2023", "title": "Digital Personal Data Protection Act", "sections": 44},
+                              headers={"content-type": "application/json"})
+
+    client = NyaykoshClient(client=httpx.Client(transport=httpx.MockTransport(handler)))
+    result = client.get_law_with_penalties("dpdp-2023")
+    assert result["law"]["data"]["id"] == "dpdp-2023"
+    assert result["law"]["data"]["sections"] == 44
+    assert result["penalties"]["status"] == "retrieved"
+    assert result["penalties"]["data"][0]["section"] == "S. 9"
+    assert result["verification_status"] == "not_independently_verified"
+
+
+def test_nyaykosh_rejects_invalid_slug_and_non_https_base_url():
+    import pytest
+    from app.sources.nyaykosh import NyaykoshClient
+
+    with pytest.raises(ValueError):
+        NyaykoshClient(base_url="http://lawascode.negd.in/")
+    with pytest.raises(ValueError):
+        NyaykoshClient().get_law("../dpdp-2023")
+
+
+def test_nyaykosh_404_is_reported_as_not_found():
+    import httpx
+    import pytest
+    from app.sources.nyaykosh import NyaykoshClient, NyaykoshNotFound
+
+    client = NyaykoshClient(client=httpx.Client(transport=httpx.MockTransport(
+        lambda request: httpx.Response(404, request=request)
+    )))
+    with pytest.raises(NyaykoshNotFound):
+        client.get_law("ibc-2016")
