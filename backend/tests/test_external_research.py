@@ -140,3 +140,45 @@ def test_failed_document_retrieval_is_counted(monkeypatch):
     assert result["failed_retrievals_count"] == 1
     assert result["results"][0]["retrieval_error_type"] == "HTTPStatusError"
     assert result["results"][0]["http_status"] == 429
+
+
+
+def test_ssl_context_keeps_certificate_and_hostname_verification_enabled():
+    import ssl
+    from app.sources.external_research import _ssl_context
+
+    context = _ssl_context()
+    assert context.verify_mode == ssl.CERT_REQUIRED
+    assert context.check_hostname is True
+
+
+def test_429_activates_host_cooldown_and_suppresses_followup(monkeypatch):
+    import time
+    import httpx
+    from app.sources.external_research import (
+        OfficialSourceCooldown, _host_cooldown_until, _host_pacing, _set_host_cooldown,
+    )
+
+    host = "elegalix.allahabadhighcourt.in"
+    _host_cooldown_until.pop(host, None)
+    request = httpx.Request("GET", f"https://{host}/judgment")
+    response = httpx.Response(429, request=request, headers={"Retry-After": "120"})
+    delay = _set_host_cooldown(host, response)
+
+    assert 119 <= delay <= 120
+    with pytest.raises(OfficialSourceCooldown) as exc:
+        _host_pacing(host)
+    assert exc.value.http_status == 429
+    assert exc.value.retry_after_seconds > 0
+
+
+def test_429_without_retry_after_uses_conservative_default_cooldown():
+    import httpx
+    from app.sources.external_research import _set_host_cooldown, _host_cooldown_until
+
+    host = "elegalix.allahabadhighcourt.in"
+    _host_cooldown_until.pop(host, None)
+    request = httpx.Request("GET", f"https://{host}/judgment")
+    response = httpx.Response(429, request=request)
+    delay = _set_host_cooldown(host, response)
+    assert delay == 900.0
