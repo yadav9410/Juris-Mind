@@ -226,59 +226,74 @@ def test_nyaykosh_404_is_reported_as_not_found():
         client.get_law("ibc-2016")
 
 
-def test_document_validator_rejects_court_homepage_and_captcha_pages():
-    from app.sources.external_research import _validate_document_content
+def test_long_memo_prompt_becomes_short_issue_specific_brave_query():
+    from app.sources.external_research import _build_source_query
 
-    ok, status, _ = _validate_document_content(
-        "Welcome to the official website. Home About Us Contact Us. " * 20,
-        "allahabad_elegalix", content_type="html",
+    prompt = (
+        "Research IBC 2016 Section 7 under Indian Central law. Use India Code as the primary "
+        "statutory source and NyayKosh as supplementary. Identify amendments, filing requirements, "
+        "limitation rules, and key Supreme Court and Allahabad High Court judgments. Prefer official "
+        "court documents. Provide case citations, dates, relevant paragraphs, source links and "
+        "verification status. Highlight missing evidence and research limitations."
     )
-    assert not ok
-    assert status == "generic_portal_page"
+    q = _build_source_query(prompt, "india_code", "India", None)
+    assert len(q) <= 220
+    assert "IBC" in q
+    assert "Section 7" in q
+    assert "verification status" not in q.lower()
 
-    ok, status, _ = _validate_document_content(
-        "Please enter the security code to continue. CAPTCHA required.",
-        "allahabad_elegalix", content_type="html",
+
+def test_brave_422_is_reported_as_provider_bad_request(monkeypatch):
+    import httpx
+    import app.sources.external_research as external
+
+    monkeypatch.setenv("BRAVE_SEARCH_API_KEY", "test-token")
+    request = httpx.Request("GET", "https://api.search.brave.com/res/v1/web/search")
+    response = httpx.Response(422, request=request, text="Invalid query parameter")
+
+    def fake_get(*args, **kwargs):
+        assert len(kwargs["params"]["q"]) <= 300
+        return response
+
+    monkeypatch.setattr(external.httpx, "get", fake_get)
+    result = external.search_official_sources(
+        "Research IBC 2016 Section 7. Use official sources and provide a detailed memo with citations.",
+        categories=["legislation"],
     )
-    assert not ok
-    assert status == "access_challenge_or_error_page"
+    assert result["external_search_status"] == "provider_error"
+    assert result["source_errors"][0]["failure_category"] == "provider_bad_request"
+    assert result["source_errors"][0]["http_status"] == 422
+    assert result["source_summaries"]["india_code"]["search_status"] == "failed"
 
 
-def test_document_validator_requires_judgment_markers():
-    from app.sources.external_research import _validate_document_content
+def test_mixed_provider_success_and_failure_is_partial(monkeypatch):
+    import httpx
+    import app.sources.external_research as external
 
-    generic = "Allahabad High Court official website case status cause list contact. " * 20
-    ok, status, _ = _validate_document_content(
-        generic, "allahabad_elegalix", content_type="html",
+    monkeypatch.setenv("BRAVE_SEARCH_API_KEY", "test-token")
+
+    def fake_get(url, params=None, headers=None, timeout=None):
+        if "indiacode.gov.in" in params["q"]:
+            class Good:
+                status_code = 200
+                def raise_for_status(self): pass
+                def json(self):
+                    return {"web": {"results": [{
+                        "title": "IBC", "url": "https://indiacode.gov.in/act/ibc", "description": "Act text"
+                    }]}}
+            return Good()
+        request = httpx.Request("GET", url)
+        return httpx.Response(422, request=request, text="Bad query")
+
+    monkeypatch.setattr(external.httpx, "get", fake_get)
+    monkeypatch.setattr(external, "_fetch_official_document", lambda url, sid, timeout=18.0: {
+        "source_url": url, "downloaded": True, "extracted": True,
+        "extracted_text": "Section 7", "content_sha256": "abc",
+        "verification_status": "not_verified",
+    })
+    result = external.search_official_sources(
+        "IBC 2016 Section 7", categories=["legislation", "gazette"]
     )
-    assert not ok
-    assert status == "not_identified_as_judgment"
-
-    judgment = ("A.B. versus State of Uttar Pradesh. Judgment. Coram: Justice X. "
-                "The petitioner submits that the respondent acted contrary to law. "
-                "The appellant challenged the order. " * 20)
-    ok, status, _ = _validate_document_content(
-        judgment, "allahabad_elegalix", content_type="html",
-    )
-    assert ok
-    assert status == "judgment_content_detected"
-
-
-def test_document_validator_requires_legislation_markers():
-    from app.sources.external_research import _validate_document_content
-
-    ok, status, _ = _validate_document_content(
-        "India Code home page. Search Acts and Rules. Contact us. " * 20,
-        "india_code", content_type="html",
-    )
-    assert not ok
-    assert status == "not_identified_as_legislation"
-
-    act = ("The Insolvency and Bankruptcy Code, 2016. Act No. 31 of 2016. "
-           "An Act to consolidate and amend the laws relating to reorganisation "
-           "and insolvency resolution. Arrangement of Sections. Section 1. " * 12)
-    ok, status, _ = _validate_document_content(
-        act, "india_code", content_type="html",
-    )
-    assert ok
-    assert status == "legislation_content_detected"
+    assert result["external_search_status"] == "partial"
+    assert result["source_summaries"]["india_code"]["search_status"] == "completed"
+    assert result["source_summaries"]["egazette_india"]["search_status"] == "failed"

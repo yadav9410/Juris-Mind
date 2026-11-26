@@ -287,9 +287,15 @@ def render_legal_research():
                     response = api.request("POST", "/research/search/official", json_body=payload)
                     if response.ok:
                         external = response.json()
-                        st.success(
-                            f"External search finished: {external.get('search_results_count', external.get('result_count', 0))} results."
-                        )
+                        search_state = external.get("external_search_status", "unknown")
+                        if search_state == "completed":
+                            st.success("Official-source search completed. Results still require legal-authority verification.")
+                        elif search_state == "partial":
+                            st.warning("Official-source search partially completed. One or more providers failed; see source status below.")
+                        elif search_state == "provider_error":
+                            st.error("Official-source providers failed. No successful search results were returned; see provider errors below.")
+                        else:
+                            st.info("Official-source search returned no matching results.")
                         metric_cols = st.columns(4)
                         metric_cols[0].metric("Search results", external.get("search_results_count", external.get("result_count", 0)))
                         metric_cols[1].metric("Downloaded", external.get("downloaded_documents_count", external.get("document_count", 0)))
@@ -299,13 +305,20 @@ def render_legal_research():
                         if external.get("source_summaries"):
                             with st.expander("Per-source retrieval summary"):
                                 for source_id, summary in external["source_summaries"].items():
+                                    status = summary.get("search_status", "unknown").upper()
                                     st.write(
-                                        f"**{summary.get('source_name', source_id)}** — "
+                                        f"**{summary.get('source_name', source_id)}** — {status}; "
                                         f"results: {summary.get('search_results_count', 0)}, "
                                         f"downloaded: {summary.get('downloaded_documents_count', 0)}, "
                                         f"extracted: {summary.get('extracted_documents_count', 0)}, "
-                                        f"failed: {summary.get('failed_retrievals_count', 0)}"
+                                        f"retrieval failures: {summary.get('failed_retrievals_count', 0)}"
                                     )
+                                    for source_error in summary.get("search_errors", []):
+                                        st.error(
+                                            f"{source_error.get('failure_category', 'search_error')}: "
+                                            f"HTTP {source_error.get('http_status') or '—'} — "
+                                            f"{source_error.get('error', 'Provider search failed')}"
+                                        )
                         st.info(external.get("notice", "Results are research leads, not verified authorities."))
                         if external.get("external_search_status") == "no_results":
                             st.warning("No official-domain results were returned. Broaden the query or inspect source access limitations.")

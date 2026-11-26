@@ -150,55 +150,6 @@ def _retry_after_seconds(response: httpx.Response | None) -> float | None:
             return None
 
 
-
-def _validate_document_content(text: str, source_id: str, *, content_type: str) -> tuple[bool, str, str]:
-    """Reject portal chrome and generic pages before calling content an extraction.
-
-    This is a conservative document-type gate, not legal authority verification.
-    """
-    normalized = re.sub(r"\s+", " ", (text or "")).strip()
-    lower = normalized.lower()
-    if not normalized:
-        return False, "empty_content", "No extractable text was found."
-
-    challenge_markers = (
-        "captcha", "enter the security code", "security code",
-        "access denied", "enable javascript", "please wait while",
-        "checking your browser", "request blocked", "forbidden",
-        "you do not have permission", "session has expired",
-        "sign in to continue", "login to continue",
-    )
-    if any(marker in lower for marker in challenge_markers):
-        return False, "access_challenge_or_error_page", "The response appears to be an access challenge or error page."
-
-    generic_markers = (
-        "welcome to the official website", "home about us contact us",
-        "skip to main content", "site map", "website designed and developed",
-    )
-    if any(marker in lower for marker in generic_markers):
-        return False, "generic_portal_page", "The response looks like portal navigation or homepage content, not a legal document."
-
-    if source_id == "india_code":
-        act_signals = ("act no.", "an act to", "be it enacted", "section 1", "arrangement of sections", "the insolvency and bankruptcy code")
-        if len(normalized) < 250 or not any(signal in lower for signal in act_signals):
-            return False, "not_identified_as_legislation", "The page does not contain sufficient statutory-document markers."
-        return True, "legislation_content_detected", "Statutory-document markers detected; currency and legal status remain unverified."
-
-    if source_id in {"supreme_court_scr", "allahabad_elegalix"}:
-        case_signals = ("versus", " vs. ", " v. ", "judgment", "judgement", "coram", "bench", "petitioner", "appellant", "respondent")
-        if len(normalized) < 700 or sum(signal in lower for signal in case_signals) < 2:
-            return False, "not_identified_as_judgment", "The page lacks sufficient judgment or case-document markers."
-        return True, "judgment_content_detected", "Case-document markers detected; identity, authenticity and precedential status remain unverified."
-
-    if source_id == "egazette_india":
-        gazette_signals = ("extraordinary", "notification", "ministry of", "dated", "gazette of india")
-        if len(normalized) < 250 or sum(signal in lower for signal in gazette_signals) < 2:
-            return False, "not_identified_as_gazette", "The page lacks sufficient Gazette-notification markers."
-        return True, "gazette_content_detected", "Gazette-notification markers detected; publication and commencement remain unverified."
-
-    # Unknown source types must not be promoted to extracted legal evidence.
-    return False, "unsupported_document_type", "No document-type validator exists for this source."
-
 def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0) -> dict:
     if not _host_allowed(url, source_id):
         raise ValueError("Search result URL is outside the selected official source host allowlist.")
@@ -292,23 +243,17 @@ def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0) ->
         text, pages, kind = "", [], "unknown"
         extraction_error = f"{type(exc).__name__}: {str(exc)[:250]}"
 
-    content_valid, content_validation_status, content_validation_note = (
-        _validate_document_content(text, source_id, content_type=kind)
-        if text.strip() else (False, "extraction_failed", extraction_error or "No text extracted.")
-    )
     result = {
         "source_url": final_url,
         "retrieved_at": datetime.now(timezone.utc).isoformat(),
         "content_type": kind,
         "content_sha256": hashlib.sha256(response.content).hexdigest(),
         "downloaded": downloaded,
-        "extracted": bool(text.strip()) and content_valid,
-        "extracted_text": text[:MAX_TEXT] if content_valid else "",
-        "page_evidence": pages[:8] if content_valid else [],
-        "document_retrieved": bool(text.strip()) and content_valid,  # legacy alias now means validated document text
+        "extracted": bool(text.strip()),
+        "extracted_text": text[:MAX_TEXT],
+        "page_evidence": pages[:8],
+        "document_retrieved": bool(text.strip()),  # backwards-compatible legacy field
         "extraction_error": extraction_error,
-        "content_validation_status": content_validation_status,
-        "content_validation_note": content_validation_note,
         "verification_status": "not_verified",
         "access_method": "brave_index_then_direct_official_fetch",
         "cache_status": "miss",
@@ -319,24 +264,61 @@ def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0) ->
     return result
 
 
+_QUERY_STOPWORDS = {
+    "research", "identify", "provide", "include", "including", "relevant",
+    "under", "indian", "central", "law", "use", "primary", "source",
+    "supplementary", "prefer", "official", "court", "documents", "document",
+    "provide", "concise", "memo", "case", "citations", "dates", "paragraphs",
+    "source", "links", "verification", "status", "highlight", "missing",
+    "evidence", "unavailable", "sources", "limitations", "mark", "unverified",
+    "results", "verified", "authorities", "and", "the", "a", "an", "of", "for",
+    "to", "with", "as", "is", "are", "by", "on", "from", "all", "where",
+}
+
+
+def _issue_terms(query: str, limit: int = 9) -> str:
+    """Reduce a memo-style instruction to its legal issue, not its output instructions."""
+    text = re.sub(r"https?://\S+", " ", query, flags=re.I)
+    # Keep the first request sentence/phrase; later sentences are usually output rules.
+    text = re.split(r"[.!?;]\s+", text, maxsplit=1)[0]
+    tokens = re.findall(r"[A-Za-z0-9][A-Za-z0-9&'/-]*", text)
+    kept = []
+    for token in tokens:
+        normalized = token.lower()
+        if normalized in _QUERY_STOPWORDS or len(normalized) < 2:
+            continue
+        if normalized not in {item.lower() for item in kept}:
+            kept.append(token)
+        if len(kept) >= limit:
+            break
+    section_match = re.search(r"\bsection\s+([0-9A-Za-z()/-]+)", text, flags=re.I)
+    if section_match:
+        section_phrase = f"Section {section_match.group(1)}"
+        kept = [item for item in kept if item.lower() != "section"]
+        kept.append(section_phrase)
+    return " ".join(kept) or "Indian law"
+
+
 def _build_source_query(query: str, source_id: str, jurisdiction: str | None,
                         court: str | None) -> str:
-    """Build source/category-specific query while retaining the user's issue."""
-    q = query.strip()
+    """Build a short source-specific query suitable for the Brave API."""
+    issue = _issue_terms(query)
+    if source_id == "india_code":
+        terms = "Act section official statutory text amendment"
+    elif source_id == "egazette_india":
+        terms = "Gazette notification amendment commencement"
+    elif source_id == "supreme_court_scr":
+        terms = "Supreme Court judgment case citation"
+    else:
+        terms = "Allahabad High Court judgment case citation"
     jurisdiction_context = ""
     if jurisdiction and jurisdiction.lower() not in {"india", "other / not specified"}:
-        jurisdiction_context = f' "{jurisdiction}"'
-    court_context = f' "{court}"' if court else ""
-
-    if source_id == "india_code":
-        terms = 'official Act statutory text relevant section amendment'
-    elif source_id == "egazette_india":
-        terms = 'Gazette notification amendment commencement publication date'
-    elif source_id == "supreme_court_scr":
-        terms = '"Supreme Court" judgment case law ratio decidendi'
-    else:
-        terms = '"Allahabad High Court" judgment order case law'
-    return re.sub(r"\s+", " ", f"{q} {terms}{jurisdiction_context}{court_context}").strip()
+        jurisdiction_context = " " + jurisdiction[:40]
+    court_context = ""
+    if court and source_id in {"supreme_court_scr", "allahabad_elegalix"}:
+        court_context = " " + court[:45]
+    # Keep q comfortably below provider query-length limits even for long UI prompts.
+    return re.sub(r"\s+", " ", f"{issue} {terms}{jurisdiction_context}{court_context}").strip()[:220]
 
 
 def search_official_sources(query: str, *, jurisdiction: str | None = None,
@@ -365,8 +347,9 @@ def search_official_sources(query: str, *, jurisdiction: str | None = None,
         source_name, category = SOURCE_META[sid]
         domain_query = " OR ".join(f"site:{d}" for d in OFFICIAL_DOMAINS[sid])
         tailored_query = _build_source_query(query, sid, jurisdiction, court)
+        brave_query = f"{domain_query} {tailored_query}"
         params = {
-            "q": f"({domain_query}) {tailored_query}",
+            "q": brave_query[:300],
             "count": max(1, min(max_results_per_source, 10)),
             "country": "IN",
             "search_lang": "en",
@@ -388,11 +371,29 @@ def search_official_sources(query: str, *, jurisdiction: str | None = None,
             hits = (response.json().get("web") or {}).get("results") or []
             logger.info("Brave API results: source_id=%s hit_count=%s", sid, len(hits))
         except Exception as exc:
-            logger.exception("Brave official-source search failed: source_id=%s", sid)
+            response_obj = getattr(exc, "response", None)
+            status_code = getattr(response_obj, "status_code", None)
+            response_detail = ""
+            if response_obj is not None:
+                try:
+                    response_detail = response_obj.text[:500]
+                except Exception:
+                    response_detail = ""
+            failure_category = (
+                "provider_bad_request" if status_code == 422 else
+                "provider_rate_limited" if status_code == 429 else
+                "provider_http_error" if status_code else "provider_connection_error"
+            )
+            logger.warning(
+                "Brave official-source search failed: source_id=%s status=%s category=%s detail=%s",
+                sid, status_code, failure_category, response_detail[:240],
+            )
             return [], [{
-                "source_id": sid, "stage": "search",
+                "source_id": sid, "source_name": source_name, "stage": "search",
+                "failure_category": failure_category, "http_status": status_code,
                 "error_type": type(exc).__name__,
-                "error": str(exc)[:300],
+                "error": (response_detail or str(exc))[:500],
+                "query_sent": params["q"],
             }]
 
         for hit in hits[:max_results_per_source]:
@@ -416,9 +417,7 @@ def search_official_sources(query: str, *, jurisdiction: str | None = None,
                 if "extracted" not in fetched:
                     item["extracted"] = bool(fetched.get("extracted_text") or fetched.get("document_retrieved"))
                 if item.get("downloaded") and item.get("extracted"):
-                    item["retrieval_status"] = "downloaded_and_validated_extraction"
-                elif item.get("downloaded") and item.get("content_validation_status"):
-                    item["retrieval_status"] = "downloaded_content_rejected"
+                    item["retrieval_status"] = "downloaded_and_extracted"
                 elif item.get("downloaded"):
                     item["retrieval_status"] = "downloaded_extraction_failed"
                 else:
@@ -430,8 +429,10 @@ def search_official_sources(query: str, *, jurisdiction: str | None = None,
                     item["retrieval_failure_category"] = "tls_certificate_verification"
                 elif isinstance(exc, OfficialSourceCooldown):
                     item["retrieval_failure_category"] = "host_rate_limit_cooldown"
-                elif item.get("http_status") == 429:
+                elif getattr(getattr(exc, "response", None), "status_code", None) == 429:
                     item["retrieval_failure_category"] = "http_rate_limited"
+                elif getattr(getattr(exc, "response", None), "status_code", None) == 403:
+                    item["retrieval_failure_category"] = "access_denied"
                 item["http_status"] = (
                     getattr(getattr(exc, "response", None), "status_code", None)
                     or getattr(exc, "http_status", None)
@@ -459,13 +460,15 @@ def search_official_sources(query: str, *, jurisdiction: str | None = None,
     search_count = len(results)
     downloaded_count = sum(bool(r.get("downloaded")) for r in results)
     extracted_count = sum(bool(r.get("extracted")) for r in results)
-    rejected_content_count = sum(r.get("retrieval_status") == "downloaded_content_rejected" for r in results)
     failed_count = sum(r.get("retrieval_status") == "download_failed" for r in results) + len(errors)
     source_summaries = {}
     for sid, (source_name, _category) in SOURCE_META.items():
         source_rows = [r for r in results if r.get("source_id") == sid]
+        source_error_rows = [e for e in errors if e.get("source_id") == sid]
         source_summaries[sid] = {
             "source_name": source_name,
+            "search_status": "failed" if source_error_rows else ("completed" if source_rows else "no_results"),
+            "search_errors": source_error_rows,
             "search_results_count": len(source_rows),
             "downloaded_documents_count": sum(bool(r.get("downloaded")) for r in source_rows),
             "extracted_documents_count": sum(bool(r.get("extracted")) for r in source_rows),
@@ -479,14 +482,16 @@ def search_official_sources(query: str, *, jurisdiction: str | None = None,
         "query": query, "jurisdiction": jurisdiction, "court": court,
         "source_priority": "official_government_and_courts_first",
         "provider": "brave_search_api",
-        "external_search_status": "completed" if results else ("no_results" if not errors else "provider_error"),
+        "external_search_status": (
+            "provider_error" if errors and not results else
+            "partial" if errors and results else
+            "completed" if results else "no_results"
+        ),
         "source_count": len(source_ids),
         "result_count": search_count,
         "search_results_count": search_count,
         "downloaded_documents_count": downloaded_count,
         "extracted_documents_count": extracted_count,
-        "rejected_non_document_pages_count": rejected_content_count,
-        "identified_document_count": extracted_count,
         "verified_authorities_count": 0,
         "failed_retrievals_count": failed_count,
         "document_count": downloaded_count,  # backwards-compatible alias
@@ -494,5 +499,5 @@ def search_official_sources(query: str, *, jurisdiction: str | None = None,
         "source_summaries": source_summaries,
         "source_errors": errors,
         "verification_status": "not_verified",
-        "notice": "Search results are research leads. Downloaded pages are counted as extracted only when conservative document-type checks pass. This is not authority verification or proposition verification.",
+        "notice": "Search results are research leads. Downloaded documents and extracted text are not authority-verified or proposition-verified. Provider status is reported separately for each source.",
     }

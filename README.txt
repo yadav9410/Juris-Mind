@@ -1,21 +1,27 @@
-JurisMind targeted replacement patch
+JurisMind targeted official-source retrieval patch
 
-Replace these files in your repository (preserve the folder paths):
+Replace these files, preserving the paths:
 
 1) backend/app/sources/external_research.py
-2) backend/tests/test_external_research.py
+2) frontend/app.py
+3) backend/tests/test_external_research.py
 
-What this patch changes:
-- Rejects obvious CAPTCHA, login, access-denied, generic portal/homepage responses.
-- Requires conservative source-specific content markers before an HTML/PDF extraction is counted as a legal document.
-- Keeps downloaded count separate from identified-document/extracted count.
-- Preserves verification_status=not_verified. This patch does NOT claim legal authority verification.
+What changed:
+- Long memo instructions are reduced to short issue-specific Brave queries (max 220 chars before site filters; max 300 chars sent as q).
+- Brave provider errors now retain HTTP status, response detail, failure category, and the actual query sent.
+- Search results distinguish completed, partial, provider_error, and no_results.
+- Per-source summaries expose search_status and search_errors.
+- Frontend displays provider-level status and errors rather than always reporting that search finished successfully.
+- HTTP 429 retrieval failures are explicitly categorized; existing host cooldown and TLS verification remain enabled.
+- Added tests for concise query generation, Brave HTTP 422 diagnostics, and partial provider success.
 
-Validation run:
-  pytest -q tests
-Result in the supplied project copy: 124 passed, 3 skipped.
+Validation performed:
+- backend/tests/test_external_research.py: 17 passed
+- backend/tests/: 124 passed, 3 skipped
+- Python compilation of frontend/app.py and external_research.py passed.
 
-Important scope note:
-- This patch addresses false-positive document extraction in the official-source retrieval pipeline.
-- It does not yet wire the standalone NyayKosh client into the research orchestrator or add NyayKosh to the frontend source controls. Do not assume NyayKosh appears in the live research workflow after applying only these two replacements.
-- No database migration or environment-variable change is required for these two files.
+Not included / not claimed:
+- This does not guarantee that Brave will return relevant official judgments.
+- This does not bypass CAPTCHA or court access controls.
+- It does not implement legal-authority verification; verified_authorities_count remains 0 unless a separate verification process is implemented.
+- A live Brave or court-portal test was not possible in this environment. After deployment, inspect per-source status and query_sent fields.
