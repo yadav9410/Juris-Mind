@@ -17,7 +17,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
-from urllib.parse import urlparse, urljoin
+from urllib.parse import urlparse, urljoin, parse_qs
 
 import fitz
 import httpx
@@ -25,7 +25,7 @@ import certifi
 from bs4 import BeautifulSoup
 
 OFFICIAL_DOMAINS = {
-    "india_code": ["indiacode.gov.in", "www.indiacode.gov.in"],
+    "india_code": ["indiacode.gov.in", "www.indiacode.gov.in", "upload.indiacode.nic.in"],
     "egazette_india": ["egazette.gov.in", "egazette.nic.in"],
     "supreme_court_scr": ["scr.sci.gov.in", "sci.gov.in"],
     "allahabad_elegalix": ["elegalix.allahabadhighcourt.in"],
@@ -136,14 +136,18 @@ def _html_document_candidates(soup: BeautifulSoup, base_url: str, source_id: str
         if not raw:
             continue
         candidate = urljoin(base_url, raw.strip())
-        path = urlparse(candidate).path.lower()
+        parsed_candidate = urlparse(candidate)
+        path = parsed_candidate.path.lower()
+        query_values = parse_qs(parsed_candidate.query)
+        filename_values = " ".join(query_values.get("filename", [])).lower()
         label = " ".join([
             str(node.get("title") or ""), str(node.get("aria-label") or ""),
             node.get_text(" ", strip=True) if getattr(node, "name", None) == "a" else "",
         ]).lower()
         looks_like_document = (
             path.endswith(".pdf") or "bitstream" in path or "download" in path
-            or "viewcontent" in path or "pdf" in label or "download" in label
+            or "viewcontent" in path or filename_values.endswith(".pdf")
+            or "pdf" in label or "download" in label
         )
         if looks_like_document and _host_allowed(candidate, source_id) and candidate not in candidates:
             candidates.append(candidate)
@@ -306,6 +310,12 @@ def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0, *,
         if "application/pdf" in content_type or response.content[:5] == b"%PDF-":
             text, pages, ocr_used = _extract_pdf(response.content)
             kind = "pdf"
+            logger.info(
+                "Official PDF extraction summary: source_id=%s url=%s status=%s content_type=%s bytes=%s pages=%s extracted_chars=%s ocr_used=%s page_text_lengths=%s",
+                source_id, final_url, response.status_code, content_type,
+                len(response.content), len(pages), len(text), ocr_used,
+                [len(str(page.get("text", ""))) for page in pages[:12]],
+            )
             if not _meaningful_legal_text(text, kind):
                 extraction_error = (
                     "PDF contains no substantial selectable text; OCR is unavailable or did not recover text."
@@ -314,15 +324,21 @@ def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0, *,
         elif "text/html" in content_type or "application/xhtml+xml" in content_type:
             soup = BeautifulSoup(response.text, "html.parser")
             candidates = _html_document_candidates(soup, final_url, source_id) if _allow_embedded else []
-            for node in soup(["script", "style", "noscript", "nav", "footer", "header"]):
-                node.decompose()
-            # Prefer the page's substantive text; if it is only a viewer shell, fetch
-            # one same-host embedded PDF/bitstream as the actual statutory document.
-            text = soup.get_text(" ", strip=True)
-            pages = []
-            kind = "html"
-            if not _meaningful_legal_text(text, kind) and candidates:
+            logger.info(
+                "Official HTML inspected: source_id=%s url=%s status=%s content_type=%s bytes=%s embedded_document_candidates=%s candidates=%s",
+                source_id, final_url, response.status_code, content_type,
+                len(response.content), len(candidates), candidates[:3],
+            )
+            # India Code's act-detail pages can contain substantial navigation and
+            # metadata while the actual consolidated Act is a separate PDF. Prefer
+            # the embedded official document even when the landing-page text is long.
+            # This avoids treating a viewer shell/page counter as the Act itself.
+            if candidates:
                 embedded_document_url = candidates[0]
+                logger.info(
+                    "India Code embedded document selected: landing_url=%s document_url=%s",
+                    final_url, embedded_document_url,
+                )
                 embedded = _fetch_official_document(
                     embedded_document_url, source_id, timeout=timeout, _allow_embedded=False
                 )
@@ -336,6 +352,17 @@ def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0, *,
                         _fetch_cache[cache_key] = (time.time(), dict(result))
                     return result
                 extraction_error = embedded.get("extraction_error") or "Embedded official document could not be extracted."
+            for node in soup(["script", "style", "noscript", "nav", "footer", "header"]):
+                node.decompose()
+            text = soup.get_text(" ", strip=True)
+            pages = []
+            kind = "html"
+            if not _meaningful_legal_text(text, kind):
+                extraction_error = extraction_error or "India Code landing page did not expose substantive statutory text or an extractable embedded document."
+            logger.info(
+                "Official HTML extraction summary: source_id=%s url=%s extracted_chars=%s meaningful=%s embedded_url=%s",
+                source_id, final_url, len(text), _meaningful_legal_text(text, kind), embedded_document_url,
+            )
         else:
             raise ValueError(f"Unsupported official document content type: {content_type or 'unknown'}")
     except Exception as exc:
@@ -365,6 +392,12 @@ def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0, *,
         "cache_status": "miss",
         "http_status": response.status_code,
     }
+    logger.info(
+        "Official document retrieval summary: source_id=%s requested_url=%s final_url=%s http_status=%s kind=%s downloaded=%s extracted=%s extracted_chars=%s extraction_error=%s",
+        source_id, url, final_url, response.status_code, kind, downloaded,
+        meaningful, len(text or "") if meaningful else 0,
+        (extraction_error or "")[:180],
+    )
     with _cache_lock:
         _fetch_cache[cache_key] = (time.time(), dict(result))
     return result

@@ -1,24 +1,21 @@
-JurisMind — India Code extraction patch
+JurisMind — India Code document-selection and diagnostics patch
 
 REPLACE THESE FILES (preserve the paths):
 1. backend/app/sources/external_research.py
 2. backend/tests/test_external_research.py
 
-WHAT THIS PATCH CHANGES
-- India Code HTML landing/viewer pages are inspected for embedded same-host PDF/bitstream links.
-- If the landing page contains only a viewer shell (for example, a page number such as "1"), the connector attempts to retrieve the embedded official document.
-- PDF extraction now rejects tiny text layers rather than counting a page number as extracted legal text.
-- If Tesseract is installed in the runtime, low-text PDF pages receive an OCR attempt. If OCR is unavailable or unsuccessful, the extraction failure is made explicit; TLS verification is not disabled.
-- Extracted text is retained up to 50,000 characters, and a requested numbered statutory section (for example Section 7) is separately captured up to the next numbered section heading, preserving subsection text.
-- Result metadata includes extraction_quality, ocr_used, embedded_document_url, targeted_provisions and targeted_provision_status.
+ROOT CAUSE ADDRESSED
+India Code publishes official Act PDFs on upload.indiacode.nic.in as well as pages on indiancode.gov.in. The previous allowlist omitted upload.indiacode.nic.in, so direct official PDF search results were discarded. In addition, the fetcher only attempted embedded document links when the landing-page HTML looked too short. India Code landing pages can contain enough metadata/navigation text to pass that threshold while still not being the Act text.
 
-VALIDATION PERFORMED
-- backend/tests/test_external_research.py: 20 passed
-- backend/tests/: 127 passed, 3 skipped
-- Python compilation: passed
+CHANGES
+- Adds upload.indiacode.nic.in to the explicit India Code official-host allowlist and Brave site query.
+- For India Code HTML pages, prefers a same-host/allowlisted embedded Act PDF when a document link is present, even if the landing page contains substantial boilerplate text.
+- Adds structured diagnostic logs for final URL, HTTP status, content type, bytes, embedded candidates, PDF page count, extracted character counts, per-page text lengths, OCR usage, and extraction failure reason.
+- Does not disable TLS verification, bypass access controls, or mark authorities verified.
+- Keeps original landing-page URL and actual PDF URL separately in result metadata.
 
-IMPORTANT LIMITATIONS
-- Tests use mocked HTTP/PDF responses. A live India Code/Render test has not been performed from this environment.
-- If the India Code PDF is image-only and Tesseract is not installed on Render, the connector will correctly report insufficient text rather than claim extraction succeeded. OCR deployment would require adding/installing Tesseract in the Render runtime.
-- Section extraction depends on the source PDF's numbered heading being text-extractable and recognizable. Review the returned source text and targeted_provisions before relying on it.
-- This patch does not verify the current legal status, amendments, commencement or proposition-level authority.
+VALIDATION
+The tests cover the upload subdomain allowlist and confirm that an embedded official PDF is selected even when the HTML landing page contains enough generic text to pass the old threshold.
+
+LIMITATION
+This patch has not been tested against the user's live Render environment. After deployment, inspect the new log lines beginning "Official HTML inspected", "India Code embedded document selected", and "Official PDF extraction summary". The logs will now identify the exact document URL and extraction result without logging full statutory text.

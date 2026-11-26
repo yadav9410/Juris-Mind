@@ -8,6 +8,7 @@ from app.sources.external_research import (
 
 def test_official_host_allowlist_rejects_non_official_and_http():
     assert _host_allowed("https://indiacode.gov.in/handle/123", "india_code")
+    assert _host_allowed("https://upload.indiacode.nic.in/showfile?actid=123&filename=act.pdf", "india_code")
     assert not _host_allowed("https://example.com/act.pdf", "india_code")
     assert not _host_allowed("http://indiacode.gov.in/act.pdf", "india_code")
     assert not _host_allowed("https://indiacode.gov.in.evil.example/act.pdf", "india_code")
@@ -27,6 +28,7 @@ def test_invalid_query_rejected_before_provider_call(monkeypatch):
 
 def test_source_registry_domains_are_explicit():
     assert "indiacode.gov.in" in OFFICIAL_DOMAINS["india_code"]
+    assert "upload.indiacode.nic.in" in OFFICIAL_DOMAINS["india_code"]
     assert "scr.sci.gov.in" in OFFICIAL_DOMAINS["supreme_court_scr"]
     assert "elegalix.allahabadhighcourt.in" in OFFICIAL_DOMAINS["allahabad_elegalix"]
 
@@ -383,3 +385,53 @@ def test_targeted_section_extraction_preserves_section_and_subsections():
     assert "(1) A financial creditor" in result["7"]
     assert "(2) The financial creditor" in result["7"]
     assert "8. Insolvency resolution" not in result["7"]
+
+
+def test_india_code_prefers_embedded_pdf_even_when_landing_page_has_substantial_boilerplate(monkeypatch):
+    import httpx
+    import app.sources.external_research as external
+
+    landing_url = "https://indiacode.gov.in/handle/123456789/2154"
+    pdf_url = "https://upload.indiacode.nic.in/showfile?actid=IBC&filename=a2016-31.pdf&type=actfile"
+    html = f"""<html><body><nav>India Code legislation rules regulations notifications statutes</nav>
+      <main><h1>The Insolvency and Bankruptcy Code, 2016</h1>
+      <p>Act details and related metadata. This page includes enough words to pass a generic
+      HTML text threshold but it is not the actual statutory document.</p>
+      <a href="{pdf_url}">Download Act PDF</a></main></body></html>"""
+
+    class FakeClient:
+        def __init__(self, **kwargs): pass
+        def __enter__(self): return self
+        def __exit__(self, *args): pass
+        def get(self, url):
+            if url == landing_url:
+                return httpx.Response(200, request=httpx.Request("GET", url),
+                    headers={"content-type": "text/html"}, text=html)
+            assert url == pdf_url
+            return httpx.Response(200, request=httpx.Request("GET", url),
+                headers={"content-type": "application/pdf"}, content=b"%PDF-1.7 fake")
+
+    monkeypatch.setattr(external.httpx, "Client", FakeClient)
+    monkeypatch.setattr(external, "_host_pacing", lambda host: None)
+    monkeypatch.setattr(external, "_extract_pdf", lambda content: (
+        "THE INSOLVENCY AND BANKRUPTCY CODE, 2016\n7. Initiation of corporate insolvency resolution process by financial creditor.\n(1) A financial creditor may file an application before the Adjudicating Authority.\n" * 5,
+        [{"page": 1, "text": "Section 7 statutory text"}], False,
+    ))
+    external._fetch_cache.clear()
+
+    result = external._fetch_official_document(landing_url, "india_code")
+    assert result["extracted"] is True
+    assert result["source_url"] == pdf_url
+    assert result["landing_page_url"] == landing_url
+    assert result["access_method"] == "official_landing_page_embedded_document"
+    assert "financial creditor" in result["extracted_text"]
+
+
+def test_india_code_showfile_link_is_detected_from_filename_query_parameter():
+    from bs4 import BeautifulSoup
+    from app.sources.external_research import _html_document_candidates
+
+    html = '''<html><body><a href="https://upload.indiacode.nic.in/showfile?actid=123&filename=a2016-31.pdf&type=actfile">View</a></body></html>'''
+    soup = BeautifulSoup(html, "html.parser")
+    found = _html_document_candidates(soup, "https://indiacode.gov.in/handle/123", "india_code")
+    assert found == ["https://upload.indiacode.nic.in/showfile?actid=123&filename=a2016-31.pdf&type=actfile"]
