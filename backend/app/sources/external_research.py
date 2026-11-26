@@ -25,7 +25,12 @@ import certifi
 from bs4 import BeautifulSoup
 
 OFFICIAL_DOMAINS = {
-    "india_code": ["indiacode.gov.in", "www.indiacode.gov.in", "upload.indiacode.nic.in"],
+    "india_code": [
+        "indiacode.gov.in", "www.indiacode.gov.in", "upload.indiacode.nic.in",
+        # Legacy India Code bitstream hosts are official and can be used when
+        # the newer upload subdomain is unreachable from a hosting region.
+        "indiacode.nic.in", "www.indiacode.nic.in",
+    ],
     "egazette_india": ["egazette.gov.in", "egazette.nic.in"],
     "supreme_court_scr": ["scr.sci.gov.in", "sci.gov.in"],
     "allahabad_elegalix": ["elegalix.allahabadhighcourt.in"],
@@ -165,6 +170,28 @@ def _meaningful_legal_text(text: str, content_kind: str) -> bool:
     return len(normalized.split()) >= 12
 
 
+def _detect_source_update_date(text: str) -> tuple[str | None, str]:
+    """Detect an explicit consolidation/update date; never infer that undated text is current."""
+    match = re.search(
+        r"\bLast\s+(?:Update|Updated)\s*[:\-]?\s*(\d{1,2}[-/]\d{1,2}[-/]\d{4})",
+        text or "", flags=re.I,
+    )
+    if not match:
+        return None, "not_established"
+    raw = match.group(1).replace("/", "-")
+    parsed = None
+    for fmt in ("%d-%m-%Y", "%Y-%m-%d"):
+        try:
+            parsed = datetime.strptime(raw, fmt).date()
+            break
+        except ValueError:
+            continue
+    if parsed is None:
+        return raw, "not_established"
+    status = "currentness_not_established" if parsed < datetime.now(timezone.utc).date() else "dated_current_snapshot"
+    return parsed.isoformat(), status
+
+
 def _extract_targeted_statutory_provisions(text: str, query: str) -> dict[str, str]:
     """Extract explicitly requested numbered Act sections without rewriting them."""
     requested = re.findall(r"\bsection\s+(\d+[A-Za-z]?)\b", query or "", flags=re.I)
@@ -245,7 +272,13 @@ def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0, *,
     host = parsed.hostname or ""
     current_url = url
     response = None
-    # At most two connection attempts. HTTP 429 is not blindly retried.
+    # Short bounded timeouts keep a slow government host from consuming the
+    # frontend request budget. ConnectTimeout is not retried: a second identical
+    # connection attempt rarely helps and delays alternate official-host results.
+    request_timeout = httpx.Timeout(
+        timeout, connect=min(5.0, timeout), read=min(10.0, timeout),
+        write=min(5.0, timeout), pool=min(5.0, timeout),
+    )
     for attempt in range(2):
         _host_pacing(host)
         try:
@@ -261,8 +294,11 @@ def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0, *,
                 "Official source connection failure: source_id=%s host=%s error_type=%s detail=%s attempt=%s",
                 source_id, host, type(exc).__name__, str(exc)[:240], attempt + 1,
             )
+            # Do not spend another full timeout retrying a connection timeout.
+            if isinstance(exc, httpx.ConnectTimeout):
+                raise
             if attempt == 0:
-                time.sleep(0.8)
+                time.sleep(0.4)
                 continue
             raise
         logger.info(
@@ -373,8 +409,11 @@ def _fetch_official_document(url: str, source_id: str, timeout: float = 18.0, *,
     if text.strip() and not meaningful and not extraction_error:
         extraction_error = "Downloaded page contained too little substantive text to count as document extraction."
 
+    source_update_date, freshness_status = _detect_source_update_date(text if meaningful else "")
     result = {
         "source_url": final_url,
+        "source_update_date": source_update_date,
+        "freshness_status": freshness_status,
         "retrieved_at": datetime.now(timezone.utc).isoformat(),
         "content_type": kind,
         "content_sha256": hashlib.sha256(response.content).hexdigest(),
@@ -460,6 +499,23 @@ def _build_source_query(query: str, source_id: str, jurisdiction: str | None,
     return re.sub(r"\s+", " ", f"{issue} {terms}{jurisdiction_context}{court_context}").strip()[:220]
 
 
+def _rank_official_hits(hits: list[dict], source_id: str) -> list[dict]:
+    """Prefer direct official Act PDFs over viewer shells and generic landing pages."""
+    if source_id != "india_code":
+        return hits
+
+    def rank(hit: dict) -> tuple[int, int]:
+        url = str(hit.get("url") or "")
+        parsed = urlparse(url)
+        host = (parsed.hostname or "").lower()
+        path = parsed.path.lower()
+        direct_pdf = path.endswith(".pdf") or "bitstream" in path
+        legacy_host = host in {"indiacode.nic.in", "www.indiacode.nic.in"}
+        return (0 if direct_pdf and legacy_host else 1 if direct_pdf else 2, 0 if legacy_host else 1)
+
+    return sorted(hits, key=rank)
+
+
 def search_official_sources(query: str, *, jurisdiction: str | None = None,
                             court: str | None = None, categories: list[str] | None = None,
                             max_results_per_source: int = 5, timeout: float = 20.0) -> dict:
@@ -535,7 +591,13 @@ def search_official_sources(query: str, *, jurisdiction: str | None = None,
                 "query_sent": params["q"],
             }]
 
-        for hit in hits[:max_results_per_source]:
+        # Keep all search leads visible, but automatically retrieve only a small
+        # number of documents. This prevents slow government portals from
+        # exhausting the frontend request budget.
+        ranked_hits = _rank_official_hits(hits[:max_results_per_source], sid)
+        fetch_limit = 2 if sid == "india_code" else 1
+        fetch_attempts = 0
+        for hit in ranked_hits:
             url = hit.get("url") or ""
             if not _host_allowed(url, sid):
                 continue
@@ -547,8 +609,15 @@ def search_official_sources(query: str, *, jurisdiction: str | None = None,
                 "verification_status": "not_verified", "downloaded": False,
                 "extracted": False,
             }
+            if fetch_attempts >= fetch_limit:
+                item["retrieval_status"] = "search_result_only"
+                item["retrieval_note"] = "Automatic retrieval limit reached; open the official source to inspect this result."
+                local_results.append(item)
+                continue
+            fetch_attempts += 1
             try:
-                fetched = _fetch_official_document(url, sid, timeout=min(timeout, 20.0))
+                fetch_timeout = min(timeout, 12.0) if sid == "india_code" else min(timeout, 10.0)
+                fetched = _fetch_official_document(url, sid, timeout=fetch_timeout)
                 item.update(fetched)
                 if sid == "india_code" and fetched.get("extracted"):
                     provision_extracts = _extract_targeted_statutory_provisions(

@@ -9,6 +9,8 @@ from app.sources.external_research import (
 def test_official_host_allowlist_rejects_non_official_and_http():
     assert _host_allowed("https://indiacode.gov.in/handle/123", "india_code")
     assert _host_allowed("https://upload.indiacode.nic.in/showfile?actid=123&filename=act.pdf", "india_code")
+    assert _host_allowed("https://www.indiacode.nic.in/bitstream/123/456/act.pdf", "india_code")
+    assert _host_allowed("https://indiacode.nic.in/bitstream/123/456/act.pdf", "india_code")
     assert not _host_allowed("https://example.com/act.pdf", "india_code")
     assert not _host_allowed("http://indiacode.gov.in/act.pdf", "india_code")
     assert not _host_allowed("https://indiacode.gov.in.evil.example/act.pdf", "india_code")
@@ -29,6 +31,7 @@ def test_invalid_query_rejected_before_provider_call(monkeypatch):
 def test_source_registry_domains_are_explicit():
     assert "indiacode.gov.in" in OFFICIAL_DOMAINS["india_code"]
     assert "upload.indiacode.nic.in" in OFFICIAL_DOMAINS["india_code"]
+    assert "www.indiacode.nic.in" in OFFICIAL_DOMAINS["india_code"]
     assert "scr.sci.gov.in" in OFFICIAL_DOMAINS["supreme_court_scr"]
     assert "elegalix.allahabadhighcourt.in" in OFFICIAL_DOMAINS["allahabad_elegalix"]
 
@@ -435,3 +438,59 @@ def test_india_code_showfile_link_is_detected_from_filename_query_parameter():
     soup = BeautifulSoup(html, "html.parser")
     found = _html_document_candidates(soup, "https://indiacode.gov.in/handle/123", "india_code")
     assert found == ["https://upload.indiacode.nic.in/showfile?actid=123&filename=a2016-31.pdf&type=actfile"]
+
+
+def test_india_code_direct_legacy_pdf_is_ranked_before_upload_viewer():
+    from app.sources.external_research import _rank_official_hits
+
+    hits = [
+        {"url": "https://upload.indiacode.nic.in/showfile?actid=123&filename=act.pdf"},
+        {"url": "https://www.indiacode.nic.in/bitstream/123/456/A2016-31.pdf"},
+        {"url": "https://www.indiacode.gov.in/handle/123"},
+    ]
+    ranked = _rank_official_hits(hits, "india_code")
+    assert ranked[0]["url"].startswith("https://www.indiacode.nic.in/bitstream/")
+
+
+def test_india_code_search_limits_auto_fetches_but_keeps_all_search_leads(monkeypatch):
+    import app.sources.external_research as external
+
+    monkeypatch.setenv("BRAVE_SEARCH_API_KEY", "test-token")
+    class FakeResponse:
+        status_code = 200
+        def raise_for_status(self):
+            return None
+        def json(self):
+            return {"web": {"results": [
+                {"title": f"IBC {i}", "url": f"https://www.indiacode.nic.in/bitstream/123/{i}/act{i}.pdf", "description": "Act"}
+                for i in range(4)
+            ]}}
+
+    calls = []
+    monkeypatch.setattr(external.httpx, "get", lambda *args, **kwargs: FakeResponse())
+    def fake_fetch(url, sid, timeout=18.0):
+        calls.append(url)
+        return {"downloaded": True, "extracted": True, "document_retrieved": True,
+                "content_sha256": "hash", "extracted_text": "Section 7 text"}
+    monkeypatch.setattr(external, "_fetch_official_document", fake_fetch)
+
+    result = external.search_official_sources("IBC Section 7", categories=["legislation"], max_results_per_source=4)
+    assert len(result["results"]) == 4
+    assert len(calls) == 2
+    assert sum(r["retrieval_status"] == "search_result_only" for r in result["results"]) == 2
+
+
+def test_legacy_india_code_pdf_update_date_is_not_mislabeled_current():
+    from app.sources.external_research import _detect_source_update_date
+
+    date, status = _detect_source_update_date("THE INSOLVENCY AND BANKRUPTCY CODE, 2016\nLast Update 18-8-2021")
+    assert date == "2021-08-18"
+    assert status == "currentness_not_established"
+
+
+def test_undated_source_does_not_claim_currentness():
+    from app.sources.external_research import _detect_source_update_date
+
+    date, status = _detect_source_update_date("The Insolvency and Bankruptcy Code, 2016")
+    assert date is None
+    assert status == "not_established"

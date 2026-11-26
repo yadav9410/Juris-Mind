@@ -1,21 +1,27 @@
-JurisMind — India Code document-selection and diagnostics patch
+JurisMind — India Code connectivity and request-budget patch
 
 REPLACE THESE FILES (preserve the paths):
 1. backend/app/sources/external_research.py
 2. backend/tests/test_external_research.py
 
-ROOT CAUSE ADDRESSED
-India Code publishes official Act PDFs on upload.indiacode.nic.in as well as pages on indiancode.gov.in. The previous allowlist omitted upload.indiacode.nic.in, so direct official PDF search results were discarded. In addition, the fetcher only attempted embedded document links when the landing-page HTML looked too short. India Code landing pages can contain enough metadata/navigation text to pass that threshold while still not being the Act text.
+WHY THIS PATCH
+Render logs show ConnectTimeout to upload.indiacode.nic.in, followed by a frontend 60-second read timeout. The previous patch added the upload host to the allowlist but did not provide an alternate official-host route or sufficiently bound the time spent on failed retrievals.
 
 CHANGES
-- Adds upload.indiacode.nic.in to the explicit India Code official-host allowlist and Brave site query.
-- For India Code HTML pages, prefers a same-host/allowlisted embedded Act PDF when a document link is present, even if the landing page contains substantial boilerplate text.
-- Adds structured diagnostic logs for final URL, HTTP status, content type, bytes, embedded candidates, PDF page count, extracted character counts, per-page text lengths, OCR usage, and extraction failure reason.
-- Does not disable TLS verification, bypass access controls, or mark authorities verified.
-- Keeps original landing-page URL and actual PDF URL separately in result metadata.
+- Adds the legacy official India Code hosts indiacode.nic.in and www.indiacode.nic.in to the allowlist and Brave domain query.
+- Ranks direct legacy India Code PDF/bitstream results ahead of the upload-subdomain viewer result.
+- Does not retry ConnectTimeout; uses bounded connect/read timeouts.
+- Limits automatic document fetches to two India Code documents and one document per other provider, while retaining all search leads in the response.
+- Records explicit source update dates when present. Undated documents are marked freshness_status=not_established; an old dated consolidation is not represented as current.
+- Keeps TLS certificate verification enabled and authority verification_status=not_verified.
 
 VALIDATION
-The tests cover the upload subdomain allowlist and confirm that an embedded official PDF is selected even when the HTML landing page contains enough generic text to pass the old threshold.
+- Targeted external-research tests: 26 passed.
+- Backend tests suite: 133 passed, 3 skipped.
+- Python compilation passed.
 
-LIMITATION
-This patch has not been tested against the user's live Render environment. After deployment, inspect the new log lines beginning "Official HTML inspected", "India Code embedded document selected", and "Official PDF extraction summary". The logs will now identify the exact document URL and extraction result without logging full statutory text.
+IMPORTANT LIMITATION
+The legacy India Code PDF endpoint was reachable through external web inspection, but this patch has not been live-tested from the user's Render region. That accessible PDF says "Last Update 18-8-2021". It is suitable for testing retrieval/extraction, but must not be presented as the current consolidated IBC. The result now carries source_update_date and freshness_status so the application can disclose that limitation.
+
+DEPLOYMENT
+Replace the two files, commit and push, then redeploy the backend. Re-run the IBC Section 7 test. Check whether the direct www.indiacode.nic.in bitstream result is selected and inspect source_update_date/freshness_status. If the old PDF is returned, treat it as a historical snapshot pending reconciliation with later official amendment Acts, including the 2026 amendment listed by IBBI.
