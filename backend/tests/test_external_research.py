@@ -224,3 +224,61 @@ def test_nyaykosh_404_is_reported_as_not_found():
     )))
     with pytest.raises(NyaykoshNotFound):
         client.get_law("ibc-2016")
+
+
+def test_document_validator_rejects_court_homepage_and_captcha_pages():
+    from app.sources.external_research import _validate_document_content
+
+    ok, status, _ = _validate_document_content(
+        "Welcome to the official website. Home About Us Contact Us. " * 20,
+        "allahabad_elegalix", content_type="html",
+    )
+    assert not ok
+    assert status == "generic_portal_page"
+
+    ok, status, _ = _validate_document_content(
+        "Please enter the security code to continue. CAPTCHA required.",
+        "allahabad_elegalix", content_type="html",
+    )
+    assert not ok
+    assert status == "access_challenge_or_error_page"
+
+
+def test_document_validator_requires_judgment_markers():
+    from app.sources.external_research import _validate_document_content
+
+    generic = "Allahabad High Court official website case status cause list contact. " * 20
+    ok, status, _ = _validate_document_content(
+        generic, "allahabad_elegalix", content_type="html",
+    )
+    assert not ok
+    assert status == "not_identified_as_judgment"
+
+    judgment = ("A.B. versus State of Uttar Pradesh. Judgment. Coram: Justice X. "
+                "The petitioner submits that the respondent acted contrary to law. "
+                "The appellant challenged the order. " * 20)
+    ok, status, _ = _validate_document_content(
+        judgment, "allahabad_elegalix", content_type="html",
+    )
+    assert ok
+    assert status == "judgment_content_detected"
+
+
+def test_document_validator_requires_legislation_markers():
+    from app.sources.external_research import _validate_document_content
+
+    ok, status, _ = _validate_document_content(
+        "India Code home page. Search Acts and Rules. Contact us. " * 20,
+        "india_code", content_type="html",
+    )
+    assert not ok
+    assert status == "not_identified_as_legislation"
+
+    act = ("The Insolvency and Bankruptcy Code, 2016. Act No. 31 of 2016. "
+           "An Act to consolidate and amend the laws relating to reorganisation "
+           "and insolvency resolution. Arrangement of Sections. Section 1. " * 12)
+    ok, status, _ = _validate_document_content(
+        act, "india_code", content_type="html",
+    )
+    assert ok
+    assert status == "legislation_content_detected"
